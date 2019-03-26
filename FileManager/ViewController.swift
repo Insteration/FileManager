@@ -19,7 +19,7 @@ class ViewController: UITableViewController {
     var lastUrl = [URL]()
     
     var files = [String]()
-    var temporaryPath = ""
+    var temporaryPath = String()
     
     #warning("Main method for get list of URLS")
     func updateListsURLS() {
@@ -44,7 +44,7 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        navigationController?.navigationBar.prefersLargeTitles = true
         // FM Start directory
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(fileManager.path))")
         
@@ -59,6 +59,11 @@ class ViewController: UITableViewController {
         
         // Start of List URLS
         updateListsURLS()
+        
+        UIView.transition(with: tableView,
+                          duration: 0.35,
+                          options: .transitionCrossDissolve,
+                          animations: { self.tableView.reloadData() }) // left out the unnecessary syntax in the completion block a
 
     }
     
@@ -79,7 +84,7 @@ extension ViewController {
     //MARK: - Create new fodler or file or copy
     
     private func createFolderAndFileMenu() {
-        let alert = UIAlertController(title: "Add Item", message: "Select what you want add", preferredStyle: .alert)
+        let alert = UIAlertController(title: "File Manager Menu", message: "Please choose what you need.", preferredStyle: .alert)
         let file = UIAlertAction(title: "File", style: .default, handler: {_ in self.createNewFileAlertController()} )
         let folder = UIAlertAction(title: "Folder", style: .default, handler: {_ in self.createNewFolderAlertController() })
         let copy = UIAlertAction(title: "Copy", style: .default, handler: {_ in self.createCopy() })
@@ -160,14 +165,12 @@ extension ViewController {
     // MARK: - Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return listUrl.count
         return files.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         // Convert URL to string
-//        cell.textLabel?.text = fileManager.getNameByUrl(listUrl[indexPath.row])
         cell.textLabel?.text = files[indexPath.row]
         return cell
     }
@@ -181,9 +184,7 @@ extension ViewController {
         
         // Create id for Jump
         let id = fileManager.getIdUrlByName(fileManager.getListUrl(lastUrl[lastUrl.count - 1]), ((cell?.textLabel!.text)!))
-//        let id = fileManager.getIdUrlByName(fileManager.getListUrl(fileManager.getUrl(fileManager.path)), (cell?.textLabel!.text)!)
         print("Debugger message: - ID is \(id)")
-//        updateListsURLS()
         
         if (cell?.textLabel!.text)! == ".." && lastUrl.count > 1 {
             lastUrl.remove(at: lastUrl.count - 1)
@@ -217,3 +218,5 @@ extension ViewController {
     }
 
 }
+
+

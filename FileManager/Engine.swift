@@ -13,8 +13,6 @@ struct FM {
     
     let fm = FileManager.default
     let path = ""
-    var temporaryPath = String()
-
     
     func getUrl(_ path: String) -> URL {
         var url = URL(fileURLWithPath: "")
