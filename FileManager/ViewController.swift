@@ -26,19 +26,19 @@ class ViewController: UITableViewController {
         listUrl = fileManager.getListUrl(lastUrl[lastUrl.count - 1])
         print("Debugger message: func updateListsURLS() - \(listUrl)")
 
-//        temporaryPath = lastUrl[lastUrl.count - 1].path
-//        print("Debugger message: temporaryPath - \(temporaryPath)")
-        
         files = []
-        
         files.insert("..", at: 0)
+        
         for i in listUrl {
             files.append(fileManager.getNameByUrl(i))
         }
         
+        files.sort()
+        
         print("Debugger message: - files in array - \(files)")
         
-        tableView.reloadData()
+        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() }) // left out the unnecessary syntax in the completion block a
+//        tableView.reloadData()
     }
     
     override func viewDidLoad() {
@@ -60,10 +60,7 @@ class ViewController: UITableViewController {
         // Start of List URLS
         updateListsURLS()
         
-        UIView.transition(with: tableView,
-                          duration: 0.35,
-                          options: .transitionCrossDissolve,
-                          animations: { self.tableView.reloadData() }) // left out the unnecessary syntax in the completion block a
+       
 
     }
     
