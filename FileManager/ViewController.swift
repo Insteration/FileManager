@@ -25,7 +25,7 @@ class ViewController: UITableViewController {
     lazy var searchController = UISearchController(searchResultsController: nil)
     
     #warning("Main method for get list of URLS")
-    func updateListsURLS() {
+    fileprivate func updateListsURLS() {
         
         listUrl = fileManager.getListUrl(lastUrl[lastUrl.count - 1])
         print("Debugger message: func updateListsURLS() - \(listUrl)")
@@ -41,13 +41,11 @@ class ViewController: UITableViewController {
         
         print("Debugger message: - files in array - \(files)")
         
-        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() }) // left out the unnecessary syntax in the completion block a
-        //        tableView.reloadData()
+        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() })
     }
     
     fileprivate func createSearchBarController() {
         // Add searchbar
-        
         searchController = {
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -245,9 +243,9 @@ extension ViewController {
         if editingStyle == .delete {
             temporaryPath = lastUrl[lastUrl.count - 1].path + "/" + ((cell?.textLabel!.text)!)
             fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryPath)))
+            print("Debugger message: - Delete is \((cell?.textLabel!.text)!)")
             updateListsURLS()
         }
-        
     }
     
 }
