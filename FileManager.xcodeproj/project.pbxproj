@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D9BE0CF1224B8CAD004AF519 /* PathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9BE0CF0224B8CAD004AF519 /* PathViewController.swift */; };
 		D9C159E5224A4CE50086C550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C159E4224A4CE50086C550 /* AppDelegate.swift */; };
 		D9C159E7224A4CE50086C550 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C159E6224A4CE50086C550 /* ViewController.swift */; };
 		D9C159EA224A4CE50086C550 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C159E8224A4CE50086C550 /* Main.storyboard */; };
@@ -16,6 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D9BE0CF0224B8CAD004AF519 /* PathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PathViewController.swift; sourceTree = "<group>"; };
 		D9C159E1224A4CE50086C550 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C159E4224A4CE50086C550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9C159E6224A4CE50086C550 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -60,6 +62,7 @@
 				D9C159E6224A4CE50086C550 /* ViewController.swift */,
 				D9C159F6224A4DCE0086C550 /* Engine.swift */,
 				D9C159E8224A4CE50086C550 /* Main.storyboard */,
+				D9BE0CF0224B8CAD004AF519 /* PathViewController.swift */,
 				D9C159EB224A4CE70086C550 /* Assets.xcassets */,
 				D9C159ED224A4CE70086C550 /* LaunchScreen.storyboard */,
 				D9C159F0224A4CE70086C550 /* Info.plist */,
@@ -141,6 +144,7 @@
 				D9C159E7224A4CE50086C550 /* ViewController.swift in Sources */,
 				D9C159F7224A4DCE0086C550 /* Engine.swift in Sources */,
 				D9C159E5224A4CE50086C550 /* AppDelegate.swift in Sources */,
+				D9BE0CF1224B8CAD004AF519 /* PathViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -25,6 +25,8 @@ class ViewController: UITableViewController {
     lazy var searchController = UISearchController(searchResultsController: nil)
     
     #warning("Main method for get list of URLS")
+    
+    
     fileprivate func updateListsURLS() {
         
         listUrl = fileManager.getListUrl(lastUrl[lastUrl.count - 1])
@@ -33,6 +35,7 @@ class ViewController: UITableViewController {
         files = []
         files.insert("..", at: 0)
         
+
         for i in listUrl {
             files.append(fileManager.getNameByUrl(i))
         }
@@ -64,7 +67,7 @@ class ViewController: UITableViewController {
         super.viewDidLoad()
         
         navigationItem.hidesSearchBarWhenScrolling = true
-        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationBar.prefersLargeTitles = false
         
         createSearchBarController()
         
@@ -82,6 +85,7 @@ class ViewController: UITableViewController {
         
         // Start of List URLS
         updateListsURLS()
+ 
         
     }
     
@@ -188,6 +192,10 @@ extension ViewController {
 extension ViewController {
     
     // MARK: - Data Source
+    
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "File list"
+    }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive {
