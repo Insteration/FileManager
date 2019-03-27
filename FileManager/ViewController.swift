@@ -19,13 +19,17 @@ class ViewController: UITableViewController {
     var lastUrl = [URL]()
     
     var files = [String]()
+    var filteredFiles = [String]()
     var temporaryPath = String()
+    
+    var searchController = UISearchController(searchResultsController: nil)
     
     #warning("Main method for get list of URLS")
     func updateListsURLS() {
+        
         listUrl = fileManager.getListUrl(lastUrl[lastUrl.count - 1])
         print("Debugger message: func updateListsURLS() - \(listUrl)")
-
+        
         files = []
         files.insert("..", at: 0)
         
@@ -38,13 +42,29 @@ class ViewController: UITableViewController {
         print("Debugger message: - files in array - \(files)")
         
         UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() }) // left out the unnecessary syntax in the completion block a
-//        tableView.reloadData()
+        //        tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = true
+        
+        // Add searchbar
+        searchController = {
+            let controller = UISearchController(searchResultsController: nil)
+            controller.searchResultsUpdater = self
+            controller.obscuresBackgroundDuringPresentation = false
+            controller.dimsBackgroundDuringPresentation = false
+            controller.searchBar.placeholder = "Search"
+            controller.searchBar.barStyle = .default
+            controller.searchBar.sizeToFit()
+            navigationItem.searchController = controller
+            definesPresentationContext = true
+            return controller
+        }()
+        
         // FM Start directory
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(fileManager.path))")
         
@@ -60,8 +80,6 @@ class ViewController: UITableViewController {
         // Start of List URLS
         updateListsURLS()
         
-       
-
     }
     
     // MARK: - Actions
@@ -139,7 +157,7 @@ extension ViewController {
         print("FIRST - \(temporaryCopyPathFirst)")
         let temporaryCopyPathSecond = lastUrl[lastUrl.count - 1].path + "/" + (self.textField2?.text ?? "Copy2.txt")
         print("SECOND - \(temporaryCopyPathSecond)")
-
+        
         fileManager.copyFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathFirst)), fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathSecond)))
         updateListsURLS()
     }
@@ -154,7 +172,7 @@ extension ViewController {
             self.textField2?.placeholder = "And here"
         }
     }
-
+    
 }
 
 extension ViewController {
@@ -162,14 +180,27 @@ extension ViewController {
     // MARK: - Data Source
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return files.count
+        if searchController.isActive {
+            return filteredFiles.count
+        } else {
+            return files.count
+        }
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+        
+        cell.selectionStyle = .blue
+        
+        if searchController.isActive {
+            cell.textLabel?.text = filteredFiles[indexPath.row]
+            return cell
+        } else {
+        
         // Convert URL to string
         cell.textLabel?.text = files[indexPath.row]
         return cell
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -213,7 +244,16 @@ extension ViewController {
         }
         
     }
-
+    
 }
 
 
+extension ViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    func updateSearchResults(for searchController: UISearchController) {
+        filteredFiles.removeAll(keepingCapacity: false)
+        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        let array = (files as NSArray).filtered(using: searchPredicate)
+        filteredFiles = array as! [String]
+        self.tableView.reloadData()
+    }
+}
