@@ -21,17 +21,13 @@ class FileManagerTableViewController: UITableViewController {
     fileprivate func updateListsURLS() {
         
         storage.listUrl = fileManager.getListUrl(storage.lastUrl[storage.lastUrl.count - 1])
-        print("Debugger message: func updateListsURLS() - \(storage.listUrl)")
-        
         storage.files = []
         storage.files.insert("..", at: 0)
         
+        storage.listUrl.forEach { storage.files.append(fileManager.getNameByUrl($0)) }
         
-        for i in storage.listUrl {
-            storage.files.append(fileManager.getNameByUrl(i))
-        }
-        
-        storage.files.sort()
+        //FIXME: - Not working url index with sorted string array
+//        storage.files.sorted()
         
         print("Debugger message: - files in array - \(storage.files)")
         
@@ -88,12 +84,6 @@ class FileManagerTableViewController: UITableViewController {
     
     @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
         createFolderAndFileMenu()
-    }
-    
-    @IBAction func sizeAction(_ sender: UIBarButtonItem) {
-        for i in storage.listUrl {
-            print("Filesize is - \(i.fileSize), \(i.fileSizeString) ")
-        }
     }
 }
 
@@ -215,7 +205,7 @@ extension FileManagerTableViewController {
         
         // Take text form didSelectRowAt indexPath
         let cell = self.tableView.cellForRow(at: indexPath)
-                
+        
         // Create id for Jump
         let id = fileManager.getIdUrlByName(fileManager.getListUrl(storage.lastUrl[storage.lastUrl.count - 1]), ((cell?.textLabel!.text)!))
         print("Debugger message: - ID is \(id)")

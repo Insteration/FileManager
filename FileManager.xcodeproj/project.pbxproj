@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		D9137D53224BEEF2002A0EC4 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D52224BEEF2002A0EC4 /* InfoViewController.swift */; };
 		D9137D55224BF18A002A0EC4 /* FileManagerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */; };
+		D9137D57224C033E002A0EC4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D56224C033E002A0EC4 /* Extensions.swift */; };
 		D9C159E5224A4CE50086C550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C159E4224A4CE50086C550 /* AppDelegate.swift */; };
 		D9C159E7224A4CE50086C550 /* FileManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C159E6224A4CE50086C550 /* FileManagerTableViewController.swift */; };
 		D9C159EA224A4CE50086C550 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C159E8224A4CE50086C550 /* Main.storyboard */; };
@@ -20,6 +21,7 @@
 /* Begin PBXFileReference section */
 		D9137D52224BEEF2002A0EC4 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStorage.swift; sourceTree = "<group>"; };
+		D9137D56224C033E002A0EC4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D9C159E1224A4CE50086C550 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C159E4224A4CE50086C550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9C159E6224A4CE50086C550 /* FileManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTableViewController.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				D9C159E4224A4CE50086C550 /* AppDelegate.swift */,
 				D9C159EB224A4CE70086C550 /* Assets.xcassets */,
 				D9C159F6224A4DCE0086C550 /* FileManagerModel.swift */,
+				D9137D56224C033E002A0EC4 /* Extensions.swift */,
 				D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */,
 				D9C159F0224A4CE70086C550 /* Info.plist */,
 				D9137D52224BEEF2002A0EC4 /* InfoViewController.swift */,
@@ -145,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9C159E7224A4CE50086C550 /* FileManagerTableViewController.swift in Sources */,
+				D9137D57224C033E002A0EC4 /* Extensions.swift in Sources */,
 				D9137D55224BF18A002A0EC4 /* FileManagerStorage.swift in Sources */,
 				D9C159F7224A4DCE0086C550 /* FileManagerModel.swift in Sources */,
 				D9137D53224BEEF2002A0EC4 /* InfoViewController.swift in Sources */,

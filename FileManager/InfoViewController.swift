@@ -8,17 +8,26 @@
 
 import UIKit
 
-class InfoViewController: UIViewController {
+class InfoViewController: UITableViewController {
+    
+    
+    @IBOutlet weak var fileSizeLabel: UILabel!
+    @IBOutlet weak var fileDateLabel: UILabel!
     
     var storage = FileMangerStorage()
 
-    @IBOutlet weak var infoTextView: UITextView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+
+        self.title = storage.files[storage.index]
         
-        print(storage.files)
-        infoTextView.text = storage.files[storage.index]
+        print("******** index = \(storage.listUrl[storage.index - 1])")
+        
+        fileSizeLabel.text = storage.listUrl[storage.index - 1].fileSizeString
+        
+        let date = storage.listUrl[storage.index - 1].creationDate
+        fileDateLabel.text = date?.asString(style: .long)
     }
     
     override func viewDidLoad() {
