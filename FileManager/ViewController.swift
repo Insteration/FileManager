@@ -35,7 +35,7 @@ class ViewController: UITableViewController {
         files = []
         files.insert("..", at: 0)
         
-
+        
         for i in listUrl {
             files.append(fileManager.getNameByUrl(i))
         }
@@ -85,7 +85,7 @@ class ViewController: UITableViewController {
         
         // Start of List URLS
         updateListsURLS()
- 
+        
         
     }
     
@@ -144,12 +144,7 @@ extension ViewController {
         self.present(alert, animated: true, completion: nil)
     }
     
-    private func deleteAllFiles() {
-        let alert = UIAlertController(title: "Delete all files in folder", message: "Are you sure?", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in self.fileManager.removeFile(self.fileManager.getUrl(self.fileManager.getLocalPathByFull(self.temporaryPath))) }))
-        self.present(alert, animated: true, completion: nil)
-    }
+    
     
     //MARK: - Create new file and folder
     
@@ -214,10 +209,10 @@ extension ViewController {
             cell.textLabel?.text = filteredFiles[indexPath.row]
             return cell
         } else {
-        
-        // Convert URL to string
-        cell.textLabel?.text = files[indexPath.row]
-        return cell
+            
+            // Convert URL to string
+            cell.textLabel?.text = files[indexPath.row]
+            return cell
         }
     }
     
@@ -259,12 +254,23 @@ extension ViewController {
             temporaryPath = lastUrl[lastUrl.count - 1].path + "/" + ((cell?.textLabel!.text)!)
             
             if (cell?.textLabel!.text)! == ".." {
-                deleteAllFiles()
+                temporaryPath = lastUrl[lastUrl.count - 1].path + "/"
+                
+                let alert = UIAlertController(title: "Delete all files in folder", message: "Are you sure?", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in  self.fileManager.removeFile(self.fileManager.getUrl(self.fileManager.getLocalPathByFull(self.temporaryPath)))
+                    self.updateListsURLS()
+                }))
+                self.present(alert, animated: true, completion: nil)
+                
             } else {
-            fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryPath)))
-            print("Debugger message: - Delete is \((cell?.textLabel!.text)!)")
-            updateListsURLS()
+                
+                
+                fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryPath)))
+                print("Debugger message: - Delete is \((cell?.textLabel!.text)!)")
+                updateListsURLS()
             }
+            
         }
     }
     

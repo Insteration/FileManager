@@ -23,6 +23,6 @@ class PathViewController: UIViewController {
         text = fileManager.getUrl(fileManager.path)
             print(text)
         
-        pathAdress.text = String(contentsOf: text!.absoluteURL)
+//        pathAdress.text = String(contentsOf: text!.absoluteURL)
     }
 }
