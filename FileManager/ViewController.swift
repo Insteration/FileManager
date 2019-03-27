@@ -22,7 +22,7 @@ class ViewController: UITableViewController {
     var filteredFiles = [String]()
     var temporaryPath = String()
     
-    var searchController = UISearchController(searchResultsController: nil)
+    lazy var searchController = UISearchController(searchResultsController: nil)
     
     #warning("Main method for get list of URLS")
     func updateListsURLS() {
@@ -45,13 +45,9 @@ class ViewController: UITableViewController {
         //        tableView.reloadData()
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        navigationItem.hidesSearchBarWhenScrolling = true
-        navigationController?.navigationBar.prefersLargeTitles = true
-        
+    fileprivate func createSearchBarController() {
         // Add searchbar
+        
         searchController = {
             let controller = UISearchController(searchResultsController: nil)
             controller.searchResultsUpdater = self
@@ -64,6 +60,15 @@ class ViewController: UITableViewController {
             definesPresentationContext = true
             return controller
         }()
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        navigationItem.hidesSearchBarWhenScrolling = true
+        navigationController?.navigationBar.prefersLargeTitles = true
+        
+        createSearchBarController()
         
         // FM Start directory
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(fileManager.path))")
