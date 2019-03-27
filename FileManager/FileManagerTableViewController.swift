@@ -27,7 +27,7 @@ class FileManagerTableViewController: UITableViewController {
         storage.listUrl.forEach { storage.files.append(fileManager.getNameByUrl($0)) }
         
         //FIXME: - Not working url index with sorted string array
-//        storage.files.sorted()
+        //        storage.files.sorted()
         
         print("Debugger message: - files in array - \(storage.files)")
         
@@ -194,8 +194,6 @@ extension FileManagerTableViewController {
             cell.textLabel?.text = storage.filteredFiles[indexPath.row]
             return cell
         } else {
-            
-            // Convert URL to string
             cell.textLabel?.text = storage.files[indexPath.row]
             return cell
         }
@@ -247,20 +245,18 @@ extension FileManagerTableViewController {
                 self.present(alert, animated: true, completion: nil)
                 
             } else {
-                
-                
                 fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(storage.temporaryPath)))
                 print("Debugger message: - Delete is \((cell?.textLabel!.text)!)")
                 updateListsURLS()
             }
-            
         }
     }
-    
 }
 
-
 extension FileManagerTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+    
+    // MARK: - Update search results
+    
     func updateSearchResults(for searchController: UISearchController) {
         storage.filteredFiles.removeAll(keepingCapacity: false)
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
@@ -276,14 +272,13 @@ extension FileManagerTableViewController {
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         storage.index = indexPath.row
-        print(indexPath.row)
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GetInfo" {
-            guard let infoVC = segue.destination as? InfoViewController else {
+            guard let infoVC = segue.destination as? FileManagerInfoViewController else {
                 return
             }
             infoVC.storage = storage

@@ -12,7 +12,6 @@ import Foundation
 struct FM {
     
     let fm = FileManager.default
-//    let path = ""
     
     func getUrl(_ path: String) -> URL {
         var url = URL(fileURLWithPath: "")
@@ -146,21 +145,26 @@ struct FM {
         return ""
     }
     
-    func getFileSize(_ filePath: String) {
+    func infoAbout(url: URL) -> String {
+        // 1
         
-        var fileSize : UInt64
-        
+        // 2
         do {
-            //return [FileAttributeKey : Any]
-            let attr = try fm.attributesOfItem(atPath: filePath)
-            fileSize = attr[FileAttributeKey.size] as! UInt64
+            // 3
+            let attributes = try fm.attributesOfItem(atPath: url.path)
+            var report: [String] = ["\(url.path)", ""]
             
-            //if you convert to NSDictionary, you can get file size old way as well.
-            let dict = attr as NSDictionary
-            fileSize = dict.fileSize()
-            print("FILE SIZE is - \(fileSize)")
+            // 4
+            for (key, value) in attributes {
+                // ignore NSFileExtendedAttributes as it is a messy dictionary
+                if key.rawValue == "NSFileExtendedAttributes" { continue }
+                report.append("\(key.rawValue):\t \(value)")
+            }
+            // 5
+            return report.joined(separator: "\n")
         } catch {
-            print("Error: \(error)")
+            // 6
+            return "No information available for \(url.path)"
         }
     }
 }

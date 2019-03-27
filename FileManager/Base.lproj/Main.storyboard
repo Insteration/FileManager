@@ -55,7 +55,7 @@
         <!--File Propereties-->
         <scene sceneID="OFx-44-iTH">
             <objects>
-                <tableViewController id="v15-cg-xew" customClass="InfoViewController" customModule="FileManager" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="v15-cg-xew" customClass="FileManagerInfoViewController" customModule="FileManager" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" sectionFooterHeight="18" id="DUX-8g-dNy">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -133,6 +133,32 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="File Info" id="9Xj-56-biu">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" rowHeight="269" id="3qy-UP-dhU">
+                                        <rect key="frame" x="0.0" y="199.5" width="320" height="269"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="3qy-UP-dhU" id="7p4-5Q-A5f">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="268.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NXz-Uh-KKt">
+                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="268.5"/>
+                                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                </textView>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="bottom" secondItem="NXz-Uh-KKt" secondAttribute="bottom" id="2Je-0L-Xby"/>
+                                                <constraint firstItem="NXz-Uh-KKt" firstAttribute="top" secondItem="7p4-5Q-A5f" secondAttribute="top" id="HDv-IU-bE5"/>
+                                                <constraint firstItem="NXz-Uh-KKt" firstAttribute="leading" secondItem="7p4-5Q-A5f" secondAttribute="leading" id="JAY-Zy-UGL"/>
+                                                <constraint firstAttribute="trailing" secondItem="NXz-Uh-KKt" secondAttribute="trailing" id="nby-Ag-Kmg"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="v15-cg-xew" id="v6a-nx-a3H"/>
@@ -143,11 +169,12 @@
                     <connections>
                         <outlet property="fileDateLabel" destination="S85-7b-NPD" id="GTU-ja-5UG"/>
                         <outlet property="fileSizeLabel" destination="zRF-hD-3OM" id="Dd4-Ie-hKQ"/>
+                        <outlet property="infoTextView" destination="NXz-Uh-KKt" id="AEO-yk-P1e"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ctR-BU-FTb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2048" y="241"/>
+            <point key="canvasLocation" x="2047.5" y="240.8450704225352"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="i7D-Oy-Ku7">
