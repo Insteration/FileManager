@@ -10,7 +10,6 @@ import UIKit
 
 class FileManagerInfoViewController: UITableViewController {
     
-    
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var fileDateLabel: UILabel!
     @IBOutlet weak var infoTextView: UITextView!

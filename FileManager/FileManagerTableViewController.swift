@@ -18,7 +18,7 @@ class FileManagerTableViewController: UITableViewController {
     
     lazy var searchController = UISearchController(searchResultsController: nil)
     
-    fileprivate func updateListsURLS() {
+    func updateListsURLS() {
         
         storage.listUrl = fileManager.getListUrl(storage.lastUrl[storage.lastUrl.count - 1])
         storage.files = []
@@ -103,7 +103,7 @@ extension FileManagerTableViewController {
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
     }
-    
+
     private func createNewFileAlertController() {
         let alert = UIAlertController(title: "Create new file", message: "Enter file name", preferredStyle: .alert)
         alert.addTextField(configurationHandler: configurationTextField)
@@ -111,7 +111,7 @@ extension FileManagerTableViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in self.createNewFile() }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     #warning("Need add creating file with intro text")
     private func createNewFolderAlertController() {
         let alert = UIAlertController(title: "Create new folder", message: "Enter folder name", preferredStyle: .alert)
@@ -120,7 +120,7 @@ extension FileManagerTableViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in self.createNewFolder() }))
         self.present(alert, animated: true, completion: nil)
     }
-    
+
     private func createCopy() {
         let alert = UIAlertController(title: "Copy menu", message: "Enter first name of file and then second name for new file", preferredStyle: .alert)
         alert.addTextField(configurationHandler: configurationTextField)
@@ -129,9 +129,7 @@ extension FileManagerTableViewController {
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.getCopy() }))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    
-    
+
     //MARK: - Create new file and folder
     
     func createNewFolder() {
