@@ -27,10 +27,10 @@ class FileManagerActions {
         FileManagerStorage.urlSizer.insert(" ", at: 0)
         FileManagerStorage.listUrl.forEach { FileManagerStorage.urlSizer.append($0.fileSizeString)}
         
-        print("SIZER IS - \(FileManagerStorage.urlSizer)")
+        print("Debugger message: - url sizer is - \(FileManagerStorage.urlSizer)")
         print("Debugger message: - files in array - \(FileManagerStorage.files)")
         
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotificationForItemEdit"), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
     }
     
     func createNewFolder(_ textField: String) {

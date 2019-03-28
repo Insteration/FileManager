@@ -32,14 +32,13 @@ class FileManagerTableViewController: UITableViewController {
         }()
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "newDataNotificationForItemEdit"), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
         
         createSearchBarController()
         
@@ -177,6 +176,7 @@ extension FileManagerTableViewController {
         storage.index = indexPath.row
     }
     
+    
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -185,6 +185,6 @@ extension FileManagerTableViewController {
                 return
             }
             infoVC.storage = storage
-        }
+        } 
     }
 }
