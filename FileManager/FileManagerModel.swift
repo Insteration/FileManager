@@ -19,7 +19,7 @@ struct FM {
             url = try FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent(path)
         }
         catch {
-            print("File manger error.")
+            print("Debugger message: - File manger error.")
         }
         return url
     }
@@ -31,7 +31,7 @@ struct FM {
             listUrl = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [])
         }
         catch {
-            print("Error list url.")
+            print("Debugger message: - Error list url.")
         }
         return listUrl
     }
@@ -42,7 +42,7 @@ struct FM {
             try FileManager.default.createDirectory(at: url, withIntermediateDirectories: true)
         }
         catch {
-            print("Sorry, but i can't create directory. Check system log.")
+            print("Debugger message: - Sorry, but i can't create directory. Check system log.")
         }
     }
     
@@ -53,7 +53,7 @@ struct FM {
             urls = try FileManager.default.contentsOfDirectory(at: url, includingPropertiesForKeys: nil, options: [])
         }
         catch {
-            print("Sorry, but i can't list directory. Check system log.")
+            print("Debugger message: - Sorry, but i can't list directory. Check system log.")
         }
         return urls
     }
@@ -68,10 +68,10 @@ struct FM {
     func removeFile(_ url: URL) {
         do {
             try FileManager.default.removeItem(at: url)
-            print("File remove successful")
+            print("Debugger message: - File remove successful")
         }
         catch {
-            print("Error remove file \(url)")
+            print("Debugger message: - Error remove file \(url)")
         }
     }
     
@@ -81,7 +81,7 @@ struct FM {
             try FileManager.default.copyItem(at: url1, to: url2)
         }
         catch {
-            print("Error copy file")
+            print("Debugger message: - Error copy file")
         }
     }
     
@@ -107,7 +107,7 @@ struct FM {
                     print(sortByName(arrUrl[i]))
                 }
             } catch {
-                print("Error url") }
+                print("Debugger message: - Error url") }
         }
         return arrUrl
     }
@@ -160,7 +160,7 @@ struct FM {
             return report.joined(separator: "\n")
         } catch {
             
-            return "No information available for \(url.path)"
+            return "Debugger message: - No information available for \(url.path)"
         }
     }
 }

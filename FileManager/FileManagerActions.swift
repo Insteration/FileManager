@@ -47,9 +47,9 @@ class FileManagerActions {
     
     func getCopy(_ textfieldFirst: String, _ textFieldSecond: String) {
         let temporaryCopyPathFirst = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + textfieldFirst
-        print("FIRST - \(temporaryCopyPathFirst)")
+        print("Debugger message: - temporaryCopyPathFirst - \(temporaryCopyPathFirst)")
         let temporaryCopyPathSecond = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + textFieldSecond
-        print("SECOND - \(temporaryCopyPathSecond)")
+        print("Debugger message: - temporaryCopyPathSecond - \(temporaryCopyPathSecond)")
         fileManager.copyFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathFirst)), fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathSecond)))
         updateListsURLS()
     }

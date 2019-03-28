@@ -27,7 +27,6 @@ class FileManagerInfoViewController: UITableViewController {
             fileSizeLabel.text = FileManagerStorage.listUrl[storage.index - 1].fileSizeString
             let date = FileManagerStorage.listUrl[storage.index - 1].creationDate
             fileDateLabel.text = date?.asString(style: .long)
-            
             infoTextView.text = fm.infoAbout(url: FileManagerStorage.listUrl[storage.index - 1])
         }
         
