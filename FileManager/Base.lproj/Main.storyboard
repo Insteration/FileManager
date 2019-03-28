@@ -17,9 +17,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <containerView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" id="pJa-L7-emV">
+                            <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <connections>
+                                <segue destination="YPz-fV-tcK" kind="embed" id="QQ9-cY-Qpa"/>
+                            </connections>
+                        </containerView>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailDisclosureButton" indentationWidth="10" reuseIdentifier="Cell" textLabel="Pbc-LR-g3v" detailTextLabel="fiZ-d4-OfG" style="IBUITableViewCellStyleSubtitle" id="85o-HG-raK">
-                                <rect key="frame" x="0.0" y="55.5" width="320" height="44"/>
+                                <rect key="frame" x="0.0" y="99.5" width="320" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="85o-HG-raK" id="pAo-6N-y6X">
                                     <rect key="frame" x="0.0" y="0.0" width="252" height="43.5"/>
@@ -209,6 +216,49 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="NKH-Mg-EyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="226.875" y="240.8450704225352"/>
+        </scene>
+        <!--File Manager Path View Controller-->
+        <scene sceneID="7cO-yU-FsH">
+            <objects>
+                <viewController id="YPz-fV-tcK" customClass="FileManagerPathViewController" customModule="FileManager" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="khb-0O-l7W">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Path:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UYJ-h9-vsT">
+                                <rect key="frame" x="16" y="12" width="40" height="20"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="40" id="fuY-HA-LyR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Documents" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.14999999999999999" translatesAutoresizingMaskIntoConstraints="NO" id="SA6-nb-Fln">
+                                <rect key="frame" x="64" y="11.5" width="240" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="SA6-nb-Fln" firstAttribute="trailing" secondItem="khb-0O-l7W" secondAttribute="trailingMargin" id="0uX-sh-YxY"/>
+                            <constraint firstItem="UYJ-h9-vsT" firstAttribute="centerY" secondItem="khb-0O-l7W" secondAttribute="centerY" id="M7R-Jd-T8c"/>
+                            <constraint firstItem="SA6-nb-Fln" firstAttribute="baseline" secondItem="UYJ-h9-vsT" secondAttribute="baseline" id="XB7-gL-15E"/>
+                            <constraint firstItem="UYJ-h9-vsT" firstAttribute="leading" secondItem="khb-0O-l7W" secondAttribute="leadingMargin" id="l68-iE-Bdt"/>
+                            <constraint firstItem="SA6-nb-Fln" firstAttribute="leading" secondItem="UYJ-h9-vsT" secondAttribute="trailing" constant="8" symbolic="YES" id="lag-Bx-aBx"/>
+                            <constraint firstItem="UYJ-h9-vsT" firstAttribute="top" secondItem="khb-0O-l7W" secondAttribute="topMargin" constant="12" id="wr6-bT-fkx"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="pathHeaderLabel" destination="UYJ-h9-vsT" id="ysG-1e-EfT"/>
+                        <outlet property="pathLabel" destination="SA6-nb-Fln" id="6da-Xv-BnL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cH6-YJ-Q4x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2047.5" y="-171.12676056338029"/>
         </scene>
     </scenes>
 </document>

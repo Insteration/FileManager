@@ -59,7 +59,7 @@ struct FM {
     }
     
     
-    func createFile(_ url: URL,_ sdata: String = "") {
+    func createFile(_ url: URL, _ sdata: String = "") {
         let data: Data? = sdata.data(using: .utf8)
         FileManager.default.createFile(atPath: url.path, contents: data)
     }
@@ -76,7 +76,7 @@ struct FM {
     }
     
     
-    func copyFile(_ url1: URL,_ url2: URL) {
+    func copyFile(_ url1: URL, _ url2: URL) {
         do {
             try FileManager.default.copyItem(at: url1, to: url2)
         }
@@ -134,7 +134,8 @@ struct FM {
         return subStr
     }
     
-    func getLocalPathByFull(_ fullPath: String,_ startDirectory: String = "Documents") -> String {
+    func getLocalPathByFull(_ fullPath: String, _ startDirectory: String = "Documents") -> String {
+        
         for i in 0..<fullPath.count {
             if i + startDirectory.count < fullPath.count {
                 if startDirectory == fullPath[fullPath.index(fullPath.startIndex, offsetBy: i)..<fullPath.index(fullPath.startIndex, offsetBy: startDirectory.count + i)] {
@@ -146,24 +147,19 @@ struct FM {
     }
     
     func infoAbout(url: URL) -> String {
-        // 1
-        
-        // 2
         do {
-            // 3
             let attributes = try fm.attributesOfItem(atPath: url.path)
             var report: [String] = ["\(url.path)", ""]
-            
-            // 4
+
             for (key, value) in attributes {
                 // ignore NSFileExtendedAttributes as it is a messy dictionary
                 if key.rawValue == "NSFileExtendedAttributes" { continue }
                 report.append("\(key.rawValue):\t \(value)")
             }
-            // 5
+            
             return report.joined(separator: "\n")
         } catch {
-            // 6
+            
             return "No information available for \(url.path)"
         }
     }

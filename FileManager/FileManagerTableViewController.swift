@@ -9,7 +9,7 @@
 import UIKit
 
 class FileManagerTableViewController: UITableViewController {
-
+    
     var fileManager = FM()
     var storage = FileManagerStorage()
     var alert = Alert()
@@ -39,9 +39,8 @@ class FileManagerTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = false
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "newDataNotificationForItemEdit"), object: nil)
-   
+        
         createSearchBarController()
         
         // FM Start directory
@@ -57,10 +56,8 @@ class FileManagerTableViewController: UITableViewController {
         FileManagerStorage.listUrl = fileManager.getListUrl(FileManagerStorage.url!)
         
         // Start of List URLS\
-        print("OK")
         fileManagerActions.updateListsURLS()
         tableView.reloadData()
-  
     }
     
     @objc func shouldReload() {
@@ -119,12 +116,17 @@ extension FileManagerTableViewController {
         
         if (cell?.textLabel!.text)! == ".." && FileManagerStorage.lastUrl.count > 1 {
             FileManagerStorage.lastUrl.remove(at: FileManagerStorage.lastUrl.count - 1)
+            FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getPath"), object: nil)
             fileManagerActions.updateListsURLS()
-            
         } else if id != -1 {
             FileManagerStorage.lastUrl.append(FileManagerStorage.listUrl[id])
+            FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path
+            NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getPath"), object: nil)
             fileManagerActions.updateListsURLS()
             print("Debugger message: - Last URL is \(FileManagerStorage.lastUrl)")
+        } else if id == -1 {
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getHomePath"), object: nil)
         }
         
     }
@@ -154,7 +156,7 @@ extension FileManagerTableViewController {
     }
 }
 
-extension FileManagerTableViewController: UISearchResultsUpdating, UISearchBarDelegate {
+extension FileManagerTableViewController: UISearchResultsUpdating {
     
     // MARK: - Update search results
     #warning("Fix perehod in next folder from filtered array")
