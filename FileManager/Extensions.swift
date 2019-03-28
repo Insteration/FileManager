@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 extension URL {
     var attributes: [FileAttributeKey : Any]? {
@@ -25,6 +26,7 @@ extension URL {
     var fileSizeString: String {
         return ByteCountFormatter.string(fromByteCount: Int64(fileSize), countStyle: .file)
     }
+
     
     var creationDate: Date? {
         return attributes?[.creationDate] as? Date
@@ -37,4 +39,16 @@ extension Date {
         dateFormatter.dateStyle = style
         return dateFormatter.string(from: self)
     }
+}
+
+extension UIAlertController {
+    
+    func presentInOwnWindow(animated: Bool, completion: (() -> Void)?) {
+        let alertWindow = UIWindow(frame: UIScreen.main.bounds)
+        alertWindow.rootViewController = UIViewController()
+        alertWindow.windowLevel = UIWindow.Level.alert + 1
+        alertWindow.makeKeyAndVisible()
+        alertWindow.rootViewController?.present(self, animated: animated, completion: completion)
+    }
+    
 }

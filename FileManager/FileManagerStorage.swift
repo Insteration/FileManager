@@ -8,13 +8,14 @@
 
 import Foundation
 
-class FileMangerStorage {
+class FileManagerStorage {
     let path = ""
-    var files = [String]()
-    var filteredFiles = [String]()
+    static var files = [String]()
+    static var filteredFiles = [String]()
     var index = 0
-    var url: URL?
-    var listUrl = [URL]()
-    var lastUrl = [URL]()
-    var temporaryPath = String()
+    static var url: URL?
+    static var listUrl = [URL]()
+    static var lastUrl = [URL]()
+    static var temporaryPath = String()
+    static var urlSizer = [String]()
 }

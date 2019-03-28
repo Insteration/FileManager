@@ -1,0 +1,56 @@
+//
+//  FileManagerActions.swift
+//  FileManager
+//
+//  Created by Artem Karmaz on 3/28/19.
+//  Copyright © 2019 Johansson Group. All rights reserved.
+//
+
+import UIKit
+
+class FileManagerActions {
+    
+    var fileManager = FM()
+    
+    func updateListsURLS() {
+        
+        FileManagerStorage.listUrl = fileManager.getListUrl(FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1])
+        FileManagerStorage.files = []
+        FileManagerStorage.files.insert("..", at: 0)
+        
+        FileManagerStorage.listUrl.forEach { FileManagerStorage.files.append(fileManager.getNameByUrl($0)) }
+        
+        //FIXME: - Not working url index with sorted string array
+        //        storage.files.sorted()
+        
+        FileManagerStorage.urlSizer = []
+        FileManagerStorage.urlSizer.insert(" ", at: 0)
+        FileManagerStorage.listUrl.forEach { FileManagerStorage.urlSizer.append($0.fileSizeString)}
+        
+        print("SIZER IS - \(FileManagerStorage.urlSizer)")
+        print("Debugger message: - files in array - \(FileManagerStorage.files)")
+        
+//        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { tableView.reloadData() })
+    }
+    
+    func createNewFolder(_ textField: String) {
+        FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + textField
+        fileManager.createDir(fileManager.getUrl(fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))
+        updateListsURLS()
+    }
+    
+    func createNewFile(_ textField: String) {
+        FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + textField
+        fileManager.createFile(fileManager.getUrl(fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))
+        updateListsURLS()
+    }
+    
+    func getCopy(_ textfieldFirst: String, _ textFieldSecond: String) {
+        let temporaryCopyPathFirst = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + textfieldFirst
+        print("FIRST - \(temporaryCopyPathFirst)")
+        let temporaryCopyPathSecond = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + textFieldSecond
+        print("SECOND - \(temporaryCopyPathSecond)")
+        fileManager.copyFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathFirst)), fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathSecond)))
+        updateListsURLS()
+    }
+}

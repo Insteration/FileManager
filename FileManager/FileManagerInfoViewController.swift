@@ -14,21 +14,21 @@ class FileManagerInfoViewController: UITableViewController {
     @IBOutlet weak var fileDateLabel: UILabel!
     @IBOutlet weak var infoTextView: UITextView!
     
-    var storage = FileMangerStorage()
+    var storage = FileManagerStorage()
     var fm = FM()
     
     fileprivate func showFileInfo() {
-        self.title = storage.files[storage.index]
+        self.title = FileManagerStorage.files[storage.index]
         
         if storage.index == 0 {
             fileSizeLabel.text = ".."
             fileDateLabel.text = ".."
         } else {
-            fileSizeLabel.text = storage.listUrl[storage.index - 1].fileSizeString
-            let date = storage.listUrl[storage.index - 1].creationDate
+            fileSizeLabel.text = FileManagerStorage.listUrl[storage.index - 1].fileSizeString
+            let date = FileManagerStorage.listUrl[storage.index - 1].creationDate
             fileDateLabel.text = date?.asString(style: .long)
             
-            infoTextView.text = fm.infoAbout(url: storage.listUrl[storage.index - 1])
+            infoTextView.text = fm.infoAbout(url: FileManagerStorage.listUrl[storage.index - 1])
         }
         
     }
