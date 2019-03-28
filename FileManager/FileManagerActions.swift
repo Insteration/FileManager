@@ -11,7 +11,7 @@ import UIKit
 class FileManagerActions {
     
     var fileManager = FM()
-    
+
     func updateListsURLS() {
         
         FileManagerStorage.listUrl = fileManager.getListUrl(FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1])
@@ -30,7 +30,7 @@ class FileManagerActions {
         print("SIZER IS - \(FileManagerStorage.urlSizer)")
         print("Debugger message: - files in array - \(FileManagerStorage.files)")
         
-//        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { tableView.reloadData() })
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "newDataNotificationForItemEdit"), object: nil)
     }
     
     func createNewFolder(_ textField: String) {

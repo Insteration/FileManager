@@ -9,37 +9,12 @@
 import UIKit
 
 class FileManagerTableViewController: UITableViewController {
-    
-    var textField1: UITextField?
-    var textField2: UITextField?
-    
+
     var fileManager = FM()
     var storage = FileManagerStorage()
     var alert = Alert()
     var fileManagerActions = FileManagerActions()
-    
     lazy var searchController = UISearchController(searchResultsController: nil)
-    
-//    func updateListsURLS() {
-//
-//        storage.listUrl = fileManager.getListUrl(storage.lastUrl[storage.lastUrl.count - 1])
-//        storage.files = []
-//        storage.files.insert("..", at: 0)
-//
-//        storage.listUrl.forEach { storage.files.append(fileManager.getNameByUrl($0)) }
-//
-//        //FIXME: - Not working url index with sorted string array
-//        //        storage.files.sorted()
-//
-//        storage.urlSizer = []
-//        storage.urlSizer.insert(" ", at: 0)
-//        storage.listUrl.forEach { storage.urlSizer.append($0.fileSizeString)}
-//
-//        print("SIZER IS - \(storage.urlSizer)")
-//        print("Debugger message: - files in array - \(storage.files)")
-//
-//        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() })
-//    }
     
     fileprivate func createSearchBarController() {
         // Add searchbar
@@ -57,9 +32,6 @@ class FileManagerTableViewController: UITableViewController {
         }()
     }
     
-    fileprivate func reloadData() {
-        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() })
-    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -67,6 +39,9 @@ class FileManagerTableViewController: UITableViewController {
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = false
         
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "newDataNotificationForItemEdit"), object: nil)
+   
         createSearchBarController()
         
         // FM Start directory
@@ -84,102 +59,22 @@ class FileManagerTableViewController: UITableViewController {
         // Start of List URLS\
         print("OK")
         fileManagerActions.updateListsURLS()
-        reloadData()
+        tableView.reloadData()
   
     }
     
+    @objc func shouldReload() {
+        UIView.transition(with: tableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.tableView.reloadData() })
+    }
     // MARK: - Actions
     
     @IBAction func refreshButtonAction(_ sender: UIBarButtonItem) {
         fileManagerActions.updateListsURLS()
-        reloadData()
     }
     
     @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
-//        createFolderAndFileMenu()
-        alert.chek()
+        alert.createFolderAndFileMenu()
     }
-}
-
-extension FileManagerTableViewController {
-    
-    //MARK: - Create new fodler or file or copy
-
-    
-//    private func createFolderAndFileMenu() {
-//        let alert = UIAlertController(title: "File Manager Menu", message: "Please choose what you need.", preferredStyle: .alert)
-//        let file = UIAlertAction(title: "File", style: .default, handler: {_ in self.createNewFileAlertController()} )
-//        let folder = UIAlertAction(title: "Folder", style: .default, handler: {_ in self.createNewFolderAlertController() })
-//        let copy = UIAlertAction(title: "Copy", style: .default, handler: {_ in self.createCopy() })
-//        let cancel = UIAlertAction(title: "Cancel", style: .cancel)
-//        alert.addAction(file)
-//        alert.addAction(folder)
-//        alert.addAction(copy)
-//        alert.addAction(cancel)
-//        present(alert, animated: true, completion: nil)
-//    }
-//
-//    private func createNewFileAlertController() {
-//        let alert = UIAlertController(title: "Create new file", message: "Enter file name", preferredStyle: .alert)
-//        alert.addTextField(configurationHandler: configurationTextField)
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in self.createNewFile() }))
-//        self.present(alert, animated: true, completion: nil)
-//    }
-//
-//    #warning("Need add creating file with intro text")
-//    private func createNewFolderAlertController() {
-//        let alert = UIAlertController(title: "Create new folder", message: "Enter folder name", preferredStyle: .alert)
-//        alert.addTextField(configurationHandler: configurationTextField)
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in self.createNewFolder() }))
-//        self.present(alert, animated: true, completion: nil)
-//    }
-//
-//    private func createCopy() {
-//        let alert = UIAlertController(title: "Copy menu", message: "Enter first name of file and then second name for new file", preferredStyle: .alert)
-//        alert.addTextField(configurationHandler: configurationTextField)
-//        alert.addTextField(configurationHandler: configurationTextField)
-//        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-//        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: {_ in self.getCopy() }))
-//        self.present(alert, animated: true, completion: nil)
-//    }
-
-    //MARK: - Create new file and folder
-    
-//    func createNewFolder() {
-//        storage.temporaryPath = storage.lastUrl[storage.lastUrl.count - 1].path + "/" + (self.textField1!.text ?? "Folder")
-//        fileManager.createDir(fileManager.getUrl(fileManager.getLocalPathByFull(storage.temporaryPath)))
-//        fileManagerActions.updateListsURLS()
-//    }
-//
-//    func createNewFile() {
-//        storage.temporaryPath = storage.lastUrl[storage.lastUrl.count - 1].path + "/" + (self.textField1?.text ?? "File.txt")
-//        fileManager.createFile(fileManager.getUrl(fileManager.getLocalPathByFull(storage.temporaryPath)))
-//        updateListsURLS()
-//    }
-//
-//    func getCopy() {
-//        let temporaryCopyPathFirst = storage.lastUrl[storage.lastUrl.count - 1].path + "/" + (self.textField1?.text ?? "Copy.txt")
-//        print("FIRST - \(temporaryCopyPathFirst)")
-//        let temporaryCopyPathSecond = storage.lastUrl[storage.lastUrl.count - 1].path + "/" + (self.textField2?.text ?? "Copy2.txt")
-//        print("SECOND - \(temporaryCopyPathSecond)")
-//
-//        fileManager.copyFile(fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathFirst)), fileManager.getUrl(fileManager.getLocalPathByFull(temporaryCopyPathSecond)))
-//        updateListsURLS()
-//    }
-    
-    //MARK: - Add TextField Delegate for UIAlertController
-    
-    private func configurationTextField(textField: UITextField!) {
-        if (textField) != nil {
-            self.textField1 = textField!        //Save reference to the UITextField
-            self.textField1?.placeholder = "Type name here"
-            self.textField2 = textField!
-            self.textField2?.placeholder = "And here"
-        }
-    }
-    
 }
 
 extension FileManagerTableViewController {
@@ -225,13 +120,10 @@ extension FileManagerTableViewController {
         if (cell?.textLabel!.text)! == ".." && FileManagerStorage.lastUrl.count > 1 {
             FileManagerStorage.lastUrl.remove(at: FileManagerStorage.lastUrl.count - 1)
             fileManagerActions.updateListsURLS()
-            reloadData()
             
         } else if id != -1 {
             FileManagerStorage.lastUrl.append(FileManagerStorage.listUrl[id])
             fileManagerActions.updateListsURLS()
-            reloadData()
-            
             print("Debugger message: - Last URL is \(FileManagerStorage.lastUrl)")
         }
         
@@ -252,19 +144,11 @@ extension FileManagerTableViewController {
             
             if (cell?.textLabel!.text)! == ".." {
                 FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/"
-                
-                let alert = UIAlertController(title: "Delete all files in folder", message: "Are you sure?", preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-                alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in  self.fileManager.removeFile(self.fileManager.getUrl(self.fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))
-                    self.fileManagerActions.updateListsURLS()
-                }))
-                self.present(alert, animated: true, completion: nil)
-                
+                alert.deleteAllDataInFolder()
             } else {
                 fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))
                 print("Debugger message: - Delete is \((cell?.textLabel!.text)!)")
                 fileManagerActions.updateListsURLS()
-                reloadData()
             }
         }
     }
