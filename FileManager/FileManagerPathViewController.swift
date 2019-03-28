@@ -26,6 +26,7 @@ class FileManagerPathViewController: UIViewController {
     
     @objc func getNewPath() {
         pathLabel.text = "Documents" + fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)
+        print("directoryExistsAtPath \(fileManager.directoryExistsAtPath(fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))")
     }
     
     @objc func getHomePath() {

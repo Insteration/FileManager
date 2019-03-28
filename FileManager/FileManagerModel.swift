@@ -150,7 +150,7 @@ struct FM {
         do {
             let attributes = try fm.attributesOfItem(atPath: url.path)
             var report: [String] = ["\(url.path)", ""]
-
+            
             for (key, value) in attributes {
                 // ignore NSFileExtendedAttributes as it is a messy dictionary
                 if key.rawValue == "NSFileExtendedAttributes" { continue }
@@ -161,6 +161,31 @@ struct FM {
         } catch {
             
             return "Debugger message: - No information available for \(url.path)"
+        }
+    }
+    
+    func directoryExistsAtPath(_ path: String) -> Bool {
+        var isDirectory = ObjCBool(true)
+        let exists = fm.fileExists(atPath: path, isDirectory: &isDirectory)
+        return exists && isDirectory.boolValue
+    }
+    
+    // Create a FileManager instance
+    
+    func checkFileExists(_ path: String) {
+        
+        var isDir : ObjCBool = false
+        if fm.fileExists(atPath: path, isDirectory:&isDir) {
+            if isDir.boolValue {
+                // file exists and is a directory
+                print("Have dir")
+            } else {
+                // file exists and is not a directory
+                print("Not have dir")
+            }
+        } else {
+            // file does not exist
+            print("Not have file and dir")
         }
     }
 }

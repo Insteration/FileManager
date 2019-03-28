@@ -56,6 +56,8 @@ class FileManagerTableViewController: UITableViewController {
         
         // Start of List URLS\
         fileManagerActions.updateListsURLS()
+        
+        // Get Temp Path
         tableView.reloadData()
     }
     
@@ -71,6 +73,7 @@ class FileManagerTableViewController: UITableViewController {
     @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
         alert.createFolderAndFileMenu()
     }
+    
 }
 
 extension FileManagerTableViewController {
@@ -100,6 +103,9 @@ extension FileManagerTableViewController {
         } else {
             cell.textLabel?.text = FileManagerStorage.files[indexPath.row]
             cell.detailTextLabel?.text = FileManagerStorage.urlSizer[indexPath.row]
+            
+            
+            cell.imageView?.image = UIImage(named: "cloud-computing")
             return cell
         }
     }
@@ -175,7 +181,6 @@ extension FileManagerTableViewController {
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         storage.index = indexPath.row
     }
-    
     
     // MARK: - Navigation
     
