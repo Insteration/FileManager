@@ -29,6 +29,6 @@ class FileManagerPathViewController: UIViewController {
     }
     
     @objc func getHomePath() {
-        pathLabel.text = "Documents"
+        pathLabel.text = "Documents/"
     }
 }
