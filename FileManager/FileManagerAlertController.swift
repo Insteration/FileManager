@@ -54,13 +54,22 @@ class Alert {
         alert.presentInOwnWindow(animated: true, completion: nil)
     }
     
-    func deleteAllDataInFolder() {
+    func deleteAllDataInTopFolder() {
         let alert = UIAlertController(title: "Delete all files in folder", message: "Are you sure?", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in  self.fileManager.removeFile(self.fileManager.getUrl(self.fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))
-            self.fileManagerActions.updateListsURLS()
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in  self.fileManager.removeFile(self.fileManager.getUrl(self.fileManager.getLocalPathByFull(FileManagerStorage.topTemporaryPath)))
+            self.fileManagerActions.updateTopListsURLS()
         }))
        alert.presentInOwnWindow(animated: true, completion: nil)
+    }
+    
+    func deleteAllDataInBottomFolder() {
+        let alert = UIAlertController(title: "Delete all files in folder", message: "Are you sure?", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler:{ _ in  self.fileManager.removeFile(self.fileManager.getUrl(self.fileManager.getLocalPathByFull(FileManagerStorage.bottomTemporaryPath)))
+            self.fileManagerActions.updateBottomListsURLS()
+        }))
+        alert.presentInOwnWindow(animated: true, completion: nil)
     }
     
     func configurationTextField(textField: UITextField!) {

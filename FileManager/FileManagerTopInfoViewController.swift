@@ -8,7 +8,7 @@
 
 import UIKit
 
-class FileManagerInfoViewController: UITableViewController {
+class FileManagerTopInfoViewController: UITableViewController {
     
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var fileDateLabel: UILabel!
@@ -18,16 +18,16 @@ class FileManagerInfoViewController: UITableViewController {
     var fm = FM()
     
     fileprivate func showFileInfo() {
-        self.title = FileManagerStorage.files[storage.index]
+        self.title = FileManagerStorage.topFiles[storage.topIndex]
         
-        if storage.index == 0 {
+        if storage.topIndex == 0 {
             fileSizeLabel.text = ".."
             fileDateLabel.text = ".."
         } else {
-            fileSizeLabel.text = FileManagerStorage.listUrl[storage.index - 1].fileSizeString
-            let date = FileManagerStorage.listUrl[storage.index - 1].creationDate
+            fileSizeLabel.text = FileManagerStorage.topListUrl[storage.topIndex - 1].fileSizeString
+            let date = FileManagerStorage.topListUrl[storage.topIndex - 1].creationDate
             fileDateLabel.text = date?.asString(style: .long)
-            infoTextView.text = fm.infoAbout(url: FileManagerStorage.listUrl[storage.index - 1])
+            infoTextView.text = fm.infoAbout(url: FileManagerStorage.topListUrl[storage.topIndex - 1])
         }
         
     }

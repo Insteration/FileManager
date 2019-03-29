@@ -10,12 +10,22 @@ import Foundation
 
 class FileManagerStorage {
     let path = ""
-    static var files = [String]()
-    static var filteredFiles = [String]()
-    var index = 0
-    static var url: URL?
-    static var listUrl = [URL]()
-    static var lastUrl = [URL]()
-    static var temporaryPath = String()
-    static var urlSizer = [String]()
+    
+    static var topFiles = [String]()
+    static var topFilteredFiles = [String]()
+    var topIndex = 0
+    static var topUrl: URL?
+    static var topListUrl = [URL]()
+    static var topLastUrl = [URL]()
+    static var topTemporaryPath = String()
+    static var topUrlSizer = [String]()
+    
+    static var bottomFiles = [String]()
+    static var bottomFilesFilteredFiles = [String]()
+    var bottomIndex = 0
+    static var bottomUrl: URL?
+    static var bottomListUrl = [URL]()
+    static var bottomLastUrl = [URL]()
+    static var bottomTemporaryPath = String()
+    static var bottomUrlSizer = [String]()
 }

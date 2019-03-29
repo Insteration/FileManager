@@ -46,16 +46,16 @@ class FileManagerTableViewController: UITableViewController {
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(storage.path))")
         
         // Get Start URL
-        FileManagerStorage.url = fileManager.getUrl(storage.path)
+        FileManagerStorage.topUrl = fileManager.getUrl(storage.path)
         
         // Add start url path
-        FileManagerStorage.lastUrl.append(FileManagerStorage.url!)
+        FileManagerStorage.topLastUrl.append(FileManagerStorage.topUrl!)
         
         // Get Array of list URLS
-        FileManagerStorage.listUrl = fileManager.getListUrl(FileManagerStorage.url!)
+        FileManagerStorage.topListUrl = fileManager.getListUrl(FileManagerStorage.topUrl!)
         
         // Start of List URLS\
-        fileManagerActions.updateListsURLS()
+        fileManagerActions.updateTopListsURLS()
         
         // Get Temp Path
         tableView.reloadData()
@@ -67,7 +67,7 @@ class FileManagerTableViewController: UITableViewController {
     // MARK: - Actions
     
     @IBAction func refreshButtonAction(_ sender: UIBarButtonItem) {
-        fileManagerActions.updateListsURLS()
+        fileManagerActions.updateTopListsURLS()
     }
     
     @IBAction func addButtonAction(_ sender: UIBarButtonItem) {
@@ -86,9 +86,9 @@ extension FileManagerTableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if searchController.isActive {
-            return FileManagerStorage.filteredFiles.count
+            return FileManagerStorage.topFilteredFiles.count
         } else {
-            return FileManagerStorage.files.count
+            return FileManagerStorage.topFiles.count
         }
     }
     
@@ -98,11 +98,11 @@ extension FileManagerTableViewController {
         cell.selectionStyle = .blue
         
         if searchController.isActive {
-            cell.textLabel?.text = FileManagerStorage.filteredFiles[indexPath.row]
+            cell.textLabel?.text = FileManagerStorage.topFilteredFiles[indexPath.row]
             return cell
         } else {
-            cell.textLabel?.text = FileManagerStorage.files[indexPath.row]
-            cell.detailTextLabel?.text = FileManagerStorage.urlSizer[indexPath.row]
+            cell.textLabel?.text = FileManagerStorage.topFiles[indexPath.row]
+            cell.detailTextLabel?.text = FileManagerStorage.topUrlSizer[indexPath.row]
             
             
             cell.imageView?.image = UIImage(named: "cloud-computing")
@@ -116,20 +116,20 @@ extension FileManagerTableViewController {
         let cell = self.tableView.cellForRow(at: indexPath)
         
         // Create id for Jump
-        let id = fileManager.getIdUrlByName(fileManager.getListUrl(FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1]), ((cell?.textLabel!.text)!))
+        let id = fileManager.getIdUrlByName(fileManager.getListUrl(FileManagerStorage.topLastUrl[FileManagerStorage.topLastUrl.count - 1]), ((cell?.textLabel!.text)!))
         print("Debugger message: - ID is \(id)")
         
-        if (cell?.textLabel!.text)! == ".." && FileManagerStorage.lastUrl.count > 1 {
-            FileManagerStorage.lastUrl.remove(at: FileManagerStorage.lastUrl.count - 1)
-            FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path
+        if (cell?.textLabel!.text)! == ".." && FileManagerStorage.topLastUrl.count > 1 {
+            FileManagerStorage.topLastUrl.remove(at: FileManagerStorage.topLastUrl.count - 1)
+            FileManagerStorage.topTemporaryPath = FileManagerStorage.topLastUrl[FileManagerStorage.topLastUrl.count - 1].path
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getPath"), object: nil)
-            fileManagerActions.updateListsURLS()
+            fileManagerActions.updateTopListsURLS()
         } else if id != -1 {
-            FileManagerStorage.lastUrl.append(FileManagerStorage.listUrl[id])
-            FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path
+            FileManagerStorage.topLastUrl.append(FileManagerStorage.topListUrl[id])
+            FileManagerStorage.topTemporaryPath = FileManagerStorage.topLastUrl[FileManagerStorage.topLastUrl.count - 1].path
             NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getPath"), object: nil)
-            fileManagerActions.updateListsURLS()
-            print("Debugger message: - Last URL is \(FileManagerStorage.lastUrl)")
+            fileManagerActions.updateTopListsURLS()
+            print("Debugger message: - Last URL is \(FileManagerStorage.topLastUrl)")
         } else if id == -1 {
                 NotificationCenter.default.post(name: NSNotification.Name(rawValue: "getHomePath"), object: nil)
         }
@@ -147,15 +147,15 @@ extension FileManagerTableViewController {
         let cell = self.tableView.cellForRow(at: indexPath)
         
         if editingStyle == .delete {
-            FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/" + ((cell?.textLabel!.text)!)
+            FileManagerStorage.topTemporaryPath = FileManagerStorage.topLastUrl[FileManagerStorage.topLastUrl.count - 1].path + "/" + ((cell?.textLabel!.text)!)
             
             if (cell?.textLabel!.text)! == ".." {
-                FileManagerStorage.temporaryPath = FileManagerStorage.lastUrl[FileManagerStorage.lastUrl.count - 1].path + "/"
-                alert.deleteAllDataInFolder()
+                FileManagerStorage.topTemporaryPath = FileManagerStorage.topLastUrl[FileManagerStorage.topLastUrl.count - 1].path + "/"
+                alert.deleteAllDataInTopFolder()
             } else {
-                fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(FileManagerStorage.temporaryPath)))
+                fileManager.removeFile(fileManager.getUrl(fileManager.getLocalPathByFull(FileManagerStorage.topTemporaryPath)))
                 print("Debugger message: - Delete is \((cell?.textLabel!.text)!)")
-                fileManagerActions.updateListsURLS()
+                fileManagerActions.updateTopListsURLS()
             }
         }
     }
@@ -166,10 +166,10 @@ extension FileManagerTableViewController: UISearchResultsUpdating {
     // MARK: - Update search results
     #warning("Fix perehod in next folder from filtered array")
     func updateSearchResults(for searchController: UISearchController) {
-        FileManagerStorage.filteredFiles.removeAll(keepingCapacity: false)
+        FileManagerStorage.topFilteredFiles.removeAll(keepingCapacity: false)
         let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        let array = (FileManagerStorage.files as NSArray).filtered(using: searchPredicate)
-        FileManagerStorage.filteredFiles = array as! [String]
+        let array = (FileManagerStorage.topFiles as NSArray).filtered(using: searchPredicate)
+        FileManagerStorage.topFilteredFiles = array as! [String]
         self.tableView.reloadData()
     }
 }
@@ -179,14 +179,14 @@ extension FileManagerTableViewController {
     // MARK: - accessoryButtonTappedForRowWith
     
     override func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        storage.index = indexPath.row
+        storage.topIndex = indexPath.row
     }
     
     // MARK: - Navigation
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "GetInfo" {
-            guard let infoVC = segue.destination as? FileManagerInfoViewController else {
+            guard let infoVC = segue.destination as? FileManagerTopInfoViewController else {
                 return
             }
             infoVC.storage = storage

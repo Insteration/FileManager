@@ -7,12 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		D9137D53224BEEF2002A0EC4 /* FileManagerInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D52224BEEF2002A0EC4 /* FileManagerInfoViewController.swift */; };
+		D9137D53224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */; };
 		D9137D55224BF18A002A0EC4 /* FileManagerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */; };
 		D9137D57224C033E002A0EC4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D56224C033E002A0EC4 /* Extensions.swift */; };
 		D99CD6CA224CDB0E00BB1720 /* FileManagerAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6C9224CDB0E00BB1720 /* FileManagerAlertController.swift */; };
 		D99CD6CC224CDC4100BB1720 /* FileManagerActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */; };
-		D99CD6CE224CED0900BB1720 /* FileManagerPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6CD224CED0900BB1720 /* FileManagerPathViewController.swift */; };
+		D99CD6CE224CED0900BB1720 /* FileManagerTopPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6CD224CED0900BB1720 /* FileManagerTopPathViewController.swift */; };
+		D99CD6D2224E317200BB1720 /* FileManagerMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6D1224E317200BB1720 /* FileManagerMainViewController.swift */; };
+		D99CD6D4224E474500BB1720 /* FileManagerBottomInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6D3224E474500BB1720 /* FileManagerBottomInfoViewController.swift */; };
+		D99CD6D6224E49AD00BB1720 /* FileManagerBottomPathViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */; };
 		D9C159E5224A4CE50086C550 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C159E4224A4CE50086C550 /* AppDelegate.swift */; };
 		D9C159E7224A4CE50086C550 /* FileManagerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9C159E6224A4CE50086C550 /* FileManagerTableViewController.swift */; };
 		D9C159EA224A4CE50086C550 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D9C159E8224A4CE50086C550 /* Main.storyboard */; };
@@ -22,12 +25,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D9137D52224BEEF2002A0EC4 /* FileManagerInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerInfoViewController.swift; sourceTree = "<group>"; };
+		D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTopInfoViewController.swift; sourceTree = "<group>"; };
 		D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStorage.swift; sourceTree = "<group>"; };
 		D9137D56224C033E002A0EC4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		D99CD6C9224CDB0E00BB1720 /* FileManagerAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerAlertController.swift; sourceTree = "<group>"; };
 		D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerActions.swift; sourceTree = "<group>"; };
-		D99CD6CD224CED0900BB1720 /* FileManagerPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerPathViewController.swift; sourceTree = "<group>"; };
+		D99CD6CD224CED0900BB1720 /* FileManagerTopPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTopPathViewController.swift; sourceTree = "<group>"; };
+		D99CD6D1224E317200BB1720 /* FileManagerMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerMainViewController.swift; sourceTree = "<group>"; };
+		D99CD6D3224E474500BB1720 /* FileManagerBottomInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerBottomInfoViewController.swift; sourceTree = "<group>"; };
+		D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerBottomPathViewController.swift; sourceTree = "<group>"; };
 		D9C159E1224A4CE50086C550 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C159E4224A4CE50086C550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9C159E6224A4CE50086C550 /* FileManagerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTableViewController.swift; sourceTree = "<group>"; };
@@ -73,9 +79,12 @@
 				D9137D56224C033E002A0EC4 /* Extensions.swift */,
 				D99CD6C9224CDB0E00BB1720 /* FileManagerAlertController.swift */,
 				D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */,
-				D9137D52224BEEF2002A0EC4 /* FileManagerInfoViewController.swift */,
+				D99CD6D1224E317200BB1720 /* FileManagerMainViewController.swift */,
+				D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */,
+				D99CD6D3224E474500BB1720 /* FileManagerBottomInfoViewController.swift */,
 				D9C159F6224A4DCE0086C550 /* FileManagerModel.swift */,
-				D99CD6CD224CED0900BB1720 /* FileManagerPathViewController.swift */,
+				D99CD6CD224CED0900BB1720 /* FileManagerTopPathViewController.swift */,
+				D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */,
 				D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */,
 				D9C159E6224A4CE50086C550 /* FileManagerTableViewController.swift */,
 				D9C159F0224A4CE70086C550 /* Info.plist */,
@@ -158,11 +167,14 @@
 			files = (
 				D9C159E7224A4CE50086C550 /* FileManagerTableViewController.swift in Sources */,
 				D9137D57224C033E002A0EC4 /* Extensions.swift in Sources */,
-				D99CD6CE224CED0900BB1720 /* FileManagerPathViewController.swift in Sources */,
+				D99CD6D4224E474500BB1720 /* FileManagerBottomInfoViewController.swift in Sources */,
+				D99CD6CE224CED0900BB1720 /* FileManagerTopPathViewController.swift in Sources */,
+				D99CD6D2224E317200BB1720 /* FileManagerMainViewController.swift in Sources */,
 				D9137D55224BF18A002A0EC4 /* FileManagerStorage.swift in Sources */,
 				D99CD6CA224CDB0E00BB1720 /* FileManagerAlertController.swift in Sources */,
 				D9C159F7224A4DCE0086C550 /* FileManagerModel.swift in Sources */,
-				D9137D53224BEEF2002A0EC4 /* FileManagerInfoViewController.swift in Sources */,
+				D99CD6D6224E49AD00BB1720 /* FileManagerBottomPathViewController.swift in Sources */,
+				D9137D53224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift in Sources */,
 				D9C159E5224A4CE50086C550 /* AppDelegate.swift in Sources */,
 				D99CD6CC224CDC4100BB1720 /* FileManagerActions.swift in Sources */,
 			);
