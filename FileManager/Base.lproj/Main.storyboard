@@ -28,7 +28,7 @@
                                 </connections>
                             </containerView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ev2-9O-p3A">
-                                <rect key="frame" x="0.0" y="102" width="320" height="200"/>
+                                <rect key="frame" x="0.0" y="102" width="320" height="178"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="200" id="qlY-do-dwu"/>
@@ -68,7 +68,7 @@
                                 </connections>
                             </tableView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Pb3-VF-iDX">
-                                <rect key="frame" x="0.0" y="348" width="320" height="156"/>
+                                <rect key="frame" x="0.0" y="326" width="320" height="178"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="detailButton" indentationWidth="10" reuseIdentifier="Bottom" textLabel="t3O-iY-btg" detailTextLabel="bp4-hn-FJc" style="IBUITableViewCellStyleSubtitle" id="u1D-Y9-AP4">
@@ -105,7 +105,7 @@
                                 </connections>
                             </tableView>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2n8-Uh-v3y">
-                                <rect key="frame" x="0.0" y="310" width="320" height="30"/>
+                                <rect key="frame" x="0.0" y="288" width="320" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="b6a-Lp-B32"/>
                                 </constraints>
@@ -118,6 +118,7 @@
                         <constraints>
                             <constraint firstItem="ev2-9O-p3A" firstAttribute="trailing" secondItem="HNq-Rb-DLM" secondAttribute="trailing" id="1Xy-12-PyG"/>
                             <constraint firstItem="ev2-9O-p3A" firstAttribute="top" secondItem="9nl-w5-8JY" secondAttribute="bottom" constant="8" id="857-iR-Wy0"/>
+                            <constraint firstItem="ev2-9O-p3A" firstAttribute="height" secondItem="Pb3-VF-iDX" secondAttribute="height" id="Cop-kP-wh5"/>
                             <constraint firstItem="9nl-w5-8JY" firstAttribute="leading" secondItem="HNq-Rb-DLM" secondAttribute="leading" id="EIc-Uj-E6H"/>
                             <constraint firstItem="Pb3-VF-iDX" firstAttribute="top" secondItem="2n8-Uh-v3y" secondAttribute="bottom" constant="8" id="Jso-c6-hOW"/>
                             <constraint firstItem="2n8-Uh-v3y" firstAttribute="leading" secondItem="HNq-Rb-DLM" secondAttribute="leading" id="KJy-rP-Vc6"/>
@@ -427,7 +428,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="CLq-cS-GnN" firstAttribute="trailing" secondItem="2Jp-p1-UMI" secondAttribute="trailingMargin" id="8AB-N0-Lgg"/>
                             <constraint firstItem="d1B-k0-0id" firstAttribute="top" secondItem="2Jp-p1-UMI" secondAttribute="topMargin" constant="5" id="8C1-Wc-Ggc"/>
@@ -469,7 +470,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="B54-5O-v0H" firstAttribute="leading" secondItem="xiy-Ax-Zse" secondAttribute="leadingMargin" id="235-EC-xfS"/>
                             <constraint firstItem="B54-5O-v0H" firstAttribute="centerY" secondItem="xiy-Ax-Zse" secondAttribute="centerY" id="9Th-Nw-3jV"/>
