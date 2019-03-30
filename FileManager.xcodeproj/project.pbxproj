@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D907C257224F6AC10008DEAA /* FileManagerFileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */; };
+		D907C259224F7EE40008DEAA /* FileManagerLeftTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C258224F7EE40008DEAA /* FileManagerLeftTableViewController.swift */; };
+		D907C25B224F7EF30008DEAA /* FileManagerCommandTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C25A224F7EF30008DEAA /* FileManagerCommandTableViewController.swift */; };
+		D907C25D224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */; };
+		D907C25F224F7F0B0008DEAA /* FileManagerRightTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D907C25E224F7F0B0008DEAA /* FileManagerRightTableViewController.swift */; };
 		D9137D53224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */; };
 		D9137D55224BF18A002A0EC4 /* FileManagerStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */; };
 		D9137D57224C033E002A0EC4 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9137D56224C033E002A0EC4 /* Extensions.swift */; };
@@ -24,6 +29,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFileTableViewController.swift; sourceTree = "<group>"; };
+		D907C258224F7EE40008DEAA /* FileManagerLeftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerLeftTableViewController.swift; sourceTree = "<group>"; };
+		D907C25A224F7EF30008DEAA /* FileManagerCommandTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerCommandTableViewController.swift; sourceTree = "<group>"; };
+		D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerOptionsTableViewController.swift; sourceTree = "<group>"; };
+		D907C25E224F7F0B0008DEAA /* FileManagerRightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerRightTableViewController.swift; sourceTree = "<group>"; };
 		D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTopInfoViewController.swift; sourceTree = "<group>"; };
 		D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStorage.swift; sourceTree = "<group>"; };
 		D9137D56224C033E002A0EC4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -87,6 +97,11 @@
 				D9C159F0224A4CE70086C550 /* Info.plist */,
 				D9C159ED224A4CE70086C550 /* LaunchScreen.storyboard */,
 				D9C159E8224A4CE50086C550 /* Main.storyboard */,
+				D907C258224F7EE40008DEAA /* FileManagerLeftTableViewController.swift */,
+				D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */,
+				D907C25A224F7EF30008DEAA /* FileManagerCommandTableViewController.swift */,
+				D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */,
+				D907C25E224F7F0B0008DEAA /* FileManagerRightTableViewController.swift */,
 			);
 			path = FileManager;
 			sourceTree = "<group>";
@@ -163,7 +178,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				D9137D57224C033E002A0EC4 /* Extensions.swift in Sources */,
+				D907C257224F6AC10008DEAA /* FileManagerFileTableViewController.swift in Sources */,
+				D907C25D224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift in Sources */,
 				D99CD6D4224E474500BB1720 /* FileManagerBottomInfoViewController.swift in Sources */,
+				D907C25F224F7F0B0008DEAA /* FileManagerRightTableViewController.swift in Sources */,
 				D99CD6CE224CED0900BB1720 /* FileManagerTopPathViewController.swift in Sources */,
 				D99CD6D2224E317200BB1720 /* FileManagerMainViewController.swift in Sources */,
 				D9137D55224BF18A002A0EC4 /* FileManagerStorage.swift in Sources */,
@@ -171,8 +189,10 @@
 				D9C159F7224A4DCE0086C550 /* FileManagerModel.swift in Sources */,
 				D99CD6D6224E49AD00BB1720 /* FileManagerBottomPathViewController.swift in Sources */,
 				D9137D53224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift in Sources */,
+				D907C259224F7EE40008DEAA /* FileManagerLeftTableViewController.swift in Sources */,
 				D9C159E5224A4CE50086C550 /* AppDelegate.swift in Sources */,
 				D99CD6CC224CDC4100BB1720 /* FileManagerActions.swift in Sources */,
+				D907C25B224F7EF30008DEAA /* FileManagerCommandTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

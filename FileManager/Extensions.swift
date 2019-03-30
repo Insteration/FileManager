@@ -52,3 +52,14 @@ extension UIAlertController {
     }
     
 }
+
+extension UIBarButtonItem {
+    
+    var frame: CGRect? {
+        guard let view = self.value(forKey: "view") as? UIView else {
+            return nil
+        }
+        return view.frame
+    }
+    
+}

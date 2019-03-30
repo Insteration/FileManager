@@ -13,6 +13,14 @@ class FileManagerMainViewController: UIViewController {
     @IBOutlet weak var fileManagerTopTableView: UITableView!
     @IBOutlet weak var fileManagerBottomTableView: UITableView!
     
+    
+    @IBOutlet weak var leftMenuButton: UIButton!
+    @IBOutlet weak var fileMenuButton: UIButton!
+    @IBOutlet weak var commandMenuButton: UIButton!
+    @IBOutlet weak var optionsMenuButton: UIButton!
+    @IBOutlet weak var rightMenuButton: UIButton!
+    
+    
     var fileManager = FM()
     var storage = FileManagerStorage()
     var alert = Alert()
@@ -35,15 +43,20 @@ class FileManagerMainViewController: UIViewController {
         }()
     }
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = false
         
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
         
+        setupLeftMenuButton()
+        setupFileMenuButton()
+        setupCommandMenuButton()
+        setupOptionsMenuButton()
+        setupRightMenuButton()
         
         //        createSearchBarController()
         
@@ -87,6 +100,9 @@ class FileManagerMainViewController: UIViewController {
         fileManagerActions.updateTopListsURLS()
         fileManagerActions.updateBottomListsURLS()
     }
+    
+    
+
     
     @objc func shouldReload() {
         UIView.transition(with: fileManagerTopTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerTopTableView.reloadData() })
@@ -283,4 +299,96 @@ extension FileManagerMainViewController {
             infoVC.storage = storage
         }
     }
+}
+
+extension FileManagerMainViewController: UIPopoverPresentationControllerDelegate {
+    func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
+        return .none
+    }
+    
+    private func setupLeftMenuButton() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped1))
+        tapGesture.numberOfTapsRequired = 1
+        leftMenuButton.addGestureRecognizer(tapGesture)
+    }
+    
+    private func setupFileMenuButton() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped2))
+        tapGesture.numberOfTapsRequired = 1
+        fileMenuButton.addGestureRecognizer(tapGesture)
+    }
+    
+    private func setupCommandMenuButton() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped3))
+        tapGesture.numberOfTapsRequired = 1
+        commandMenuButton.addGestureRecognizer(tapGesture)
+    }
+    
+    private func setupOptionsMenuButton() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped4))
+        tapGesture.numberOfTapsRequired = 1
+        optionsMenuButton.addGestureRecognizer(tapGesture)
+    }
+    
+    private func setupRightMenuButton() {
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped5))
+        tapGesture.numberOfTapsRequired = 1
+        rightMenuButton.addGestureRecognizer(tapGesture)
+    }
+    
+    @objc private func tapped1() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerLeftTableViewController") else { return }
+        popVC.modalPresentationStyle = .popover
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.leftMenuButton
+        popOverVC?.sourceRect = CGRect(x: self.leftMenuButton.bounds.midX, y: self.leftMenuButton.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 250)
+        self.present(popVC, animated: true)
+    }
+    
+    @objc private func tapped2() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerFileTableViewController") else { return }
+        popVC.modalPresentationStyle = .popover
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.fileMenuButton
+        popOverVC?.sourceRect = CGRect(x: self.fileMenuButton.bounds.midX, y: self.fileMenuButton.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 250)
+        self.present(popVC, animated: true)
+    }
+
+    @objc private func tapped3() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerCommandTableViewController") else { return }
+        popVC.modalPresentationStyle = .popover
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.commandMenuButton
+        popOverVC?.sourceRect = CGRect(x: self.commandMenuButton.bounds.midX, y: self.commandMenuButton.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 250)
+        self.present(popVC, animated: true)
+    }
+    
+    @objc private func tapped4() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerOptionsTableViewController") else { return }
+        popVC.modalPresentationStyle = .popover
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.optionsMenuButton
+        popOverVC?.sourceRect = CGRect(x: self.optionsMenuButton.bounds.midX, y: self.optionsMenuButton.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 250)
+        self.present(popVC, animated: true)
+    }
+    
+    @objc private func tapped5() {
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerLeftTableViewController") else { return }
+        popVC.modalPresentationStyle = .popover
+        let popOverVC = popVC.popoverPresentationController
+        popOverVC?.delegate = self
+        popOverVC?.sourceView = self.rightMenuButton
+        popOverVC?.sourceRect = CGRect(x: self.rightMenuButton.bounds.midX, y: self.rightMenuButton.bounds.minY, width: 0, height: 0)
+        popVC.preferredContentSize = CGSize(width: 250, height: 250)
+        self.present(popVC, animated: true)
+    }
+    
 }
