@@ -115,7 +115,7 @@
                                 <items>
                                     <barButtonItem style="plain" id="GDf-Qf-o6Y">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="LrK-nW-zdx">
-                                            <rect key="frame" x="16" y="7" width="46" height="30"/>
+                                            <rect key="frame" x="16" y="7" width="35" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Left"/>
                                             <connections>
@@ -125,9 +125,10 @@
                                             </connections>
                                         </button>
                                     </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="pll-zn-d7k"/>
                                     <barButtonItem style="plain" id="P8r-VD-6Ie">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="iHv-mC-P0d">
-                                            <rect key="frame" x="62" y="7" width="30" height="30"/>
+                                            <rect key="frame" x="64" y="7" width="30" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="File"/>
                                             <connections>
@@ -140,7 +141,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="TS9-V3-4a6"/>
                                     <barButtonItem style="plain" id="KlE-Nu-SoP">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Mft-72-E4L">
-                                            <rect key="frame" x="105.5" y="7" width="71" height="30"/>
+                                            <rect key="frame" x="107" y="7" width="71" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Command"/>
                                             <connections>
@@ -153,7 +154,7 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="exZ-az-aZS"/>
                                     <barButtonItem style="plain" id="cuF-5Q-0pz">
                                         <button key="customView" opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Pzx-dS-PfR">
-                                            <rect key="frame" x="190.5" y="7" width="54" height="30"/>
+                                            <rect key="frame" x="191" y="7" width="54" height="30"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <state key="normal" title="Options"/>
                                             <connections>
