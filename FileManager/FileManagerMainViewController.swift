@@ -137,15 +137,28 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
+     
+        
         switch tableView {
         case fileManagerTopTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Top", for: indexPath)
             cell.textLabel?.text = FileManagerStorage.topFiles[indexPath.row]
             cell.detailTextLabel?.text = FileManagerStorage.topUrlSizer[indexPath.row]
+            if cell.textLabel?.text == ".." {
+                cell.accessoryType = .none
+            } else {
+                cell.accessoryType = .detailButton
+            }
+ 
         case fileManagerBottomTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Bottom", for: indexPath)
             cell.textLabel?.text = FileManagerStorage.bottomFiles[indexPath.row]
             cell.detailTextLabel?.text = FileManagerStorage.bottomUrlSizer[indexPath.row]
+            if cell.textLabel?.text == ".." {
+                cell.accessoryType = .none
+            } else {
+                cell.accessoryType = .detailButton
+            }
         default:
             ()
         }
