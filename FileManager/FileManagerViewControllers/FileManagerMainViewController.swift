@@ -44,11 +44,11 @@ class FileManagerMainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
-//        imageView.contentMode = .scaleAspectFit
-//        let image = UIImage(named: "diskette.png")
-//        imageView.image = image
-//        navigationItem.titleView = imageView
+        //        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+        //        imageView.contentMode = .scaleAspectFit
+        //        let image = UIImage(named: "diskette.png")
+        //        imageView.image = image
+        //        navigationItem.titleView = imageView
         
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = false
@@ -62,7 +62,7 @@ class FileManagerMainViewController: UIViewController {
         setupOptionsMenuButton()
         setupRightMenuButton()
         
-//        createSearchBarController()
+        //        createSearchBarController()
         
         // FM Start directory
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(storage.path))")
@@ -105,14 +105,10 @@ class FileManagerMainViewController: UIViewController {
         fileManagerActions.updateBottomListsURLS()
     }
     
-    
-    
-    
     @objc func shouldReload() {
         UIView.transition(with: fileManagerTopTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerTopTableView.reloadData() })
         UIView.transition(with: fileManagerBottomTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerBottomTableView.reloadData() })
     }
-    
 }
 
 extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -139,7 +135,7 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
         switch tableView {
         case fileManagerTopTableView:
             if searchController.isActive {
-//                numberOfRow = FileManagerStorage.topFilteredFiles.count
+                //                numberOfRow = FileManagerStorage.topFilteredFiles.count
             } else {
                 numberOfRow = FileManagerStorage.myTopFilesSorted.count
             }
@@ -152,49 +148,37 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         var cell = UITableViewCell()
-        
-        
         
         switch tableView {
         case fileManagerTopTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Top", for: indexPath)
             
-            if searchController.isActive {
-//
-//                //                cell.detailTextLabel?.isHidden = true
-//                cell.textLabel?.text = FileManagerStorage.topFilteredFiles[indexPath.row]
-//                //                cell.detailTextLabel?.text = FileManagerStorage.topUrlSizer[indexPath.row]
-//                //                cell.detailTextLabel
-//                if cell.textLabel?.text == ".." {
-//                    cell.accessoryType = .none
-//                    cell.detailTextLabel?.isEnabled = false
-//                } else {
-//                    cell.accessoryType = .detailButton
-//                }
-            } else {
-
-                cell.textLabel?.text = FileManagerStorage.myTopFilesSorted[indexPath.row].0
-                
-                cell.detailTextLabel?.text = FileManagerStorage.myTopFilesSorted[indexPath.row].1.fileSizeString
-                
-                if cell.textLabel?.text == ".." {
-                    cell.accessoryType = .none
-                    cell.detailTextLabel?.isHidden = true
-                } else {
-                    cell.accessoryType = .detailButton
-                }
-            }
             
-        case fileManagerBottomTableView:
-            cell = tableView.dequeueReusableCell(withIdentifier: "Bottom", for: indexPath)
-            cell.textLabel?.text = FileManagerStorage.myBottomFilesSorted[indexPath.row].0
-            cell.detailTextLabel?.text = FileManagerStorage.myBottomFilesSorted[indexPath.row].1.fileSizeString
+            cell.textLabel?.text = FileManagerStorage.myTopFilesSorted[indexPath.row].0
+            cell.detailTextLabel?.text = FileManagerStorage.myTopFilesSorted[indexPath.row].1.fileSizeString
+            
             if cell.textLabel?.text == ".." {
                 cell.accessoryType = .none
                 cell.detailTextLabel?.isHidden = true
             } else {
                 cell.accessoryType = .detailButton
+                cell.detailTextLabel?.isHidden = false
+            }
+            
+        case fileManagerBottomTableView:
+            cell = tableView.dequeueReusableCell(withIdentifier: "Bottom", for: indexPath)
+            
+            cell.textLabel?.text = FileManagerStorage.myBottomFilesSorted[indexPath.row].0
+            cell.detailTextLabel?.text = FileManagerStorage.myBottomFilesSorted[indexPath.row].1.fileSizeString
+            
+            if cell.textLabel?.text == ".." {
+                cell.accessoryType = .none
+                cell.detailTextLabel?.isHidden = true
+            } else {
+                cell.accessoryType = .detailButton
+                cell.detailTextLabel?.isHidden = false
             }
         default:
             ()
@@ -203,7 +187,6 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        
         
         switch tableView {
         case fileManagerTopTableView:
@@ -307,24 +290,24 @@ extension FileManagerMainViewController: UISearchResultsUpdating {
     
     // MARK: - Update search results
     
-//    #warning("Fix perehod in next folder from filtered array")
+    //    #warning("Fix perehod in next folder from filtered array")
     func updateSearchResults(for searchController: UISearchController) {
-//        FileManagerStorage.topFilteredFiles.removeAll(keepingCapacity: false)
-//        FileManagerStorage.topFilteredUrls.removeAll(keepingCapacity: false)
-//        
-//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-//        //        let searchUrls = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-//        
-//        let array = (FileManagerStorage.topFiles as NSArray).filtered(using: searchPredicate)
-//        
-//        
-//        FileManagerStorage.topFilteredFiles = array as! [String]
-//        FileManagerStorage.topFilteredFiles.insert("..", at: 0)
-//        
-//        //        FileManagerStorage.topFilteredUrls = urlArray as! [URL]
-//        //        FileManagerStorage.topFilteredUrls.forEach { print ("URL ---------------------------------- \($0)")}
-//        //
-//        fileManagerTopTableView.reloadData()
+        //        FileManagerStorage.topFilteredFiles.removeAll(keepingCapacity: false)
+        //        FileManagerStorage.topFilteredUrls.removeAll(keepingCapacity: false)
+        //
+        //        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        //        //        let searchUrls = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+        //
+        //        let array = (FileManagerStorage.topFiles as NSArray).filtered(using: searchPredicate)
+        //
+        //
+        //        FileManagerStorage.topFilteredFiles = array as! [String]
+        //        FileManagerStorage.topFilteredFiles.insert("..", at: 0)
+        //
+        //        //        FileManagerStorage.topFilteredUrls = urlArray as! [URL]
+        //        //        FileManagerStorage.topFilteredUrls.forEach { print ("URL ---------------------------------- \($0)")}
+        //        //
+        //        fileManagerTopTableView.reloadData()
     }
     
 }
@@ -335,9 +318,9 @@ extension FileManagerMainViewController {
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
         if searchController.isActive {
-//            storage.topFilteringOrNot = true
-//            storage.topSortIndex = indexPath.row
-//            print("storage index set up on - \(storage.topSortIndex)")
+            //            storage.topFilteringOrNot = true
+            //            storage.topSortIndex = indexPath.row
+            //            print("storage index set up on - \(storage.topSortIndex)")
         } else {
             storage.topFilteringOrNot = false
             switch tableView {

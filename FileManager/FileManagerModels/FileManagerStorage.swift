@@ -25,7 +25,7 @@ class FileManagerStorage {
     static var topLastUrl = [URL]()
     static var topUrlSort = [URL]()
     static var topTemporaryPath = String()
-    static var topUrlSizer = [String]()
+//    static var topUrlSizer = [String]()
     
     
     // MARK: - Bottom File Manager Column
@@ -39,5 +39,5 @@ class FileManagerStorage {
     static var bottomListUrl = [URL]()
     static var bottomLastUrl = [URL]()
     static var bottomTemporaryPath = String()
-    static var bottomUrlSizer = [String]()
+//    static var bottomUrlSizer = [String]()
 }

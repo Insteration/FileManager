@@ -22,10 +22,10 @@ class FileManagerActions {
         FileManagerStorage.myTopFilesSorted = FileManagerStorage.myTopFiles.sorted(by: { $0.0 < $1.0 })
         FileManagerStorage.myTopFilesSorted.insert((key: "..", value: URL(string: "..")!), at: 0)
         
-        FileManagerStorage.topUrlSizer = []
-        FileManagerStorage.topUrlSizer.insert(" ", at: 0)
-        FileManagerStorage.myTopFilesSorted.forEach { FileManagerStorage.topUrlSizer.append($1.fileSizeString)}
-        
+//        FileManagerStorage.topUrlSizer = []
+//        FileManagerStorage.topUrlSizer.insert(" ", at: 0)
+//        FileManagerStorage.myTopFilesSorted.forEach { FileManagerStorage.topUrlSizer.append($1.fileSizeString)}
+//        FileManagerStorage.topUrlSizer.forEach {print("URL size - \($0)") }
         
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
@@ -43,9 +43,9 @@ class FileManagerActions {
         FileManagerStorage.myBottomFilesSorted = FileManagerStorage.myBottomFiles.sorted(by: { $0.0 < $1.0 })
         FileManagerStorage.myBottomFilesSorted.insert((key: "..", value: URL(string: "..")!), at: 0)
         
-        FileManagerStorage.bottomUrlSizer = []
-        FileManagerStorage.bottomUrlSizer.insert(" ", at: 0)
-        FileManagerStorage.myBottomFilesSorted.forEach { FileManagerStorage.bottomUrlSizer.append($1.fileSizeString)}
+//        FileManagerStorage.bottomUrlSizer = []
+//        FileManagerStorage.bottomUrlSizer.insert(" ", at: 0)
+//        FileManagerStorage.myBottomFilesSorted.forEach { FileManagerStorage.bottomUrlSizer.append($1.fileSizeString)}
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
         

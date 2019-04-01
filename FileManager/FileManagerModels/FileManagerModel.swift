@@ -187,4 +187,10 @@ struct FM {
             print("Not have file and dir")
         }
     }
+    
+    func writeTextFile(_ fileName: String) {
+        let path: String = Bundle.main.path(forResource: fileName, ofType: "txt")!
+        var data = try? String(contentsOfFile: path, encoding: String.Encoding.utf8)
+        print("Data is \(data ?? "oops")")
+    }
 }
