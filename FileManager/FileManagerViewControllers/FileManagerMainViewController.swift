@@ -55,7 +55,7 @@ class FileManagerMainViewController: UIViewController {
         setupOptionsMenuButton()
         setupRightMenuButton()
         
-        createSearchBarController()
+//        createSearchBarController()
         
         // FM Start directory
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(storage.path))")
