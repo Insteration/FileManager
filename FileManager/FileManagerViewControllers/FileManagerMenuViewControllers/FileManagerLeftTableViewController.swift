@@ -11,6 +11,7 @@ import UIKit
 class FileManagerLeftTableViewController: UITableViewController {
     
     let fileManagerLeftMenu = ["File listing", "Quick view", "Info", "Tree", "Rescan"]
+    let fileManagerLeftImagesMenu = [UIImage(named: "file"), UIImage(named: "eye"), UIImage(named: "info"), UIImage(named: "diagram"), UIImage(named: "pet")]
     lazy var mainVC = FileManagerMainViewController()
     
     override func viewWillLayoutSubviews() {
@@ -38,8 +39,8 @@ class FileManagerLeftTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let menuElements = fileManagerLeftMenu[indexPath.row]
-        cell.textLabel?.text = menuElements
+        cell.textLabel?.text = fileManagerLeftMenu[indexPath.row]
+        cell.imageView?.image = fileManagerLeftImagesMenu[indexPath.row]
         
         return cell
     }

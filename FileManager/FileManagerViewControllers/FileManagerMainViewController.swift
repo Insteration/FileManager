@@ -434,7 +434,7 @@ extension FileManagerMainViewController: UIPopoverPresentationControllerDelegate
     }
     
     @objc private func tapped5() {
-        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerLeftTableViewController") else { return }
+        guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerRightTableViewController") else { return }
         popVC.modalPresentationStyle = .popover
         let popOverVC = popVC.popoverPresentationController
         popOverVC?.delegate = self

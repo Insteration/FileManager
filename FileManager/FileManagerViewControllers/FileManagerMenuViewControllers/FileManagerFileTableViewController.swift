@@ -10,7 +10,8 @@ import UIKit
 
 class FileManagerFileTableViewController: UITableViewController {
     
-    let fileManagerFileMenu = ["View", "Edit", "Copy", "Link", "Create new file", "Delete"]
+    let fileManagerFilesMenu = ["View", "Edit", "Copy", "Link", "Create new file", "Delete"]
+    let fileManagerFileImagesMenu = [UIImage(named: "files"), UIImage(named: "data"), UIImage(named: "copy"), UIImage(named: "link"), UIImage(named: "add-file"), UIImage(named: "delete")]
     lazy var mainVC = FileManagerMainViewController()
 
     override func viewWillLayoutSubviews() {
@@ -32,14 +33,14 @@ class FileManagerFileTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return fileManagerFileMenu.count
+        return fileManagerFilesMenu.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
 
-        let menuElements = fileManagerFileMenu[indexPath.row]
-        cell.textLabel?.text = menuElements
+        cell.textLabel?.text = fileManagerFilesMenu[indexPath.row]
+        cell.imageView?.image = fileManagerFileImagesMenu[indexPath.row]
         
         return cell
     }

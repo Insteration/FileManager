@@ -11,6 +11,7 @@ import UIKit
 class FileManagerCommandTableViewController: UITableViewController {
 
     let fileManagerCommandMenu = ["User menu", "Directory tree", "Find file", "Switch Panels", "Show size"]
+    let fileManagerCommandImagesMenu = [UIImage(named: "menu"),UIImage(named: "directory"), UIImage(named: "folder-5"), UIImage(named: "boolean"), UIImage(named: "box")]
     lazy var mainVC = FileManagerMainViewController()
     
     override func viewWillLayoutSubviews() {
@@ -38,8 +39,8 @@ class FileManagerCommandTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let menuElements = fileManagerCommandMenu[indexPath.row]
-        cell.textLabel?.text = menuElements
+        cell.textLabel?.text = fileManagerCommandMenu[indexPath.row]
+        cell.imageView?.image = fileManagerCommandImagesMenu[indexPath.row]
         
         return cell
     }

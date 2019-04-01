@@ -11,6 +11,7 @@ import UIKit
 class FileManagerOptionsTableViewController: UITableViewController {
     
     let fileManagerOptionsMenu = ["Configuration", "Layout", "Panel options", "Appearance", "Save setup"]
+    let fileManagerOptionsImagesMenu = [UIImage(named: "settings-4"), UIImage(named: "transfer"), UIImage(named: "web-design"), UIImage(named: "favourites"), UIImage(named: "diskette-4")]
     lazy var mainVC = FileManagerMainViewController()
     
     override func viewWillLayoutSubviews() {
@@ -38,8 +39,8 @@ class FileManagerOptionsTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
         
-        let menuElements = fileManagerOptionsMenu[indexPath.row]
-        cell.textLabel?.text = menuElements
+        cell.textLabel?.text = fileManagerOptionsMenu[indexPath.row]
+        cell.imageView?.image = fileManagerOptionsImagesMenu[indexPath.row]
         
         return cell
     }
