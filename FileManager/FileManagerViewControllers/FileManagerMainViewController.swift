@@ -343,6 +343,7 @@ extension FileManagerMainViewController {
             switch tableView {
             case fileManagerTopTableView:
                 storage.topIndex = indexPath.row
+                print("Main View Controller index = \(storage.topIndex)")
             case fileManagerBottomTableView:
                 storage.bottomIndex = indexPath.row
             default:

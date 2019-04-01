@@ -25,6 +25,8 @@ class FileManagerTopInfoViewController: UITableViewController {
 //            fileDateLabel.text = date?.asString(style: .long)
 //            infoTextView.text = fm.infoAbout(url: FileManagerStorage.topListUrl[storage.topSortIndex])
         } else {
+            print("Top View Controller index = \(storage.topIndex)")
+
             self.title = FileManagerStorage.myTopFilesSorted[storage.topIndex].0
             
             if storage.topIndex == 0 {

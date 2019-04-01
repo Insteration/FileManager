@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct FileManagerStorage {
+class FileManagerStorage {
     
     let path = ""
     var topFilteringOrNot = false

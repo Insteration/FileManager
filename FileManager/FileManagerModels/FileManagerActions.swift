@@ -26,6 +26,8 @@ class FileManagerActions {
         FileManagerStorage.topUrlSizer.insert(" ", at: 0)
         FileManagerStorage.myTopFilesSorted.forEach { FileManagerStorage.topUrlSizer.append($1.fileSizeString)}
         
+        
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
 
     }
