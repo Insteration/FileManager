@@ -15,22 +15,17 @@ class FileManagerActions {
     func updateTopListsURLS() {
         
         FileManagerStorage.topListUrl = fileManager.getListUrl(FileManagerStorage.topLastUrl[FileManagerStorage.topLastUrl.count - 1])
-        FileManagerStorage.topFiles = []
-        FileManagerStorage.topFiles.insert("..", at: 0)
-   
-        FileManagerStorage.topListUrl.forEach { FileManagerStorage.topFiles.append(fileManager.getNameByUrl($0)) }
-        
-        //FIXME: - Not working url index with sorted string array
-        //        storage.files.sorted()
+        FileManagerStorage.myTopFiles.removeAll()
+
+        FileManagerStorage.topListUrl.forEach{ FileManagerStorage.myTopFiles.updateValue($0, forKey: fileManager.getNameByUrl($0)) }
+
+        FileManagerStorage.myTopFilesSorted = FileManagerStorage.myTopFiles.sorted(by: { $0.0 < $1.0 })
+        FileManagerStorage.myTopFilesSorted.insert((key: "..", value: URL(string: "..")!), at: 0)
         
         FileManagerStorage.topUrlSizer = []
         FileManagerStorage.topUrlSizer.insert(" ", at: 0)
-        FileManagerStorage.topListUrl.forEach { FileManagerStorage.topUrlSizer.append($0.fileSizeString)}
-
-        print("Debugger message: - TOP url sizer is - \(FileManagerStorage.topUrlSizer)")
-        print("Debugger message: - TOP files in array - \(FileManagerStorage.topFiles)")
+        FileManagerStorage.myTopFilesSorted.forEach { FileManagerStorage.topUrlSizer.append($1.fileSizeString)}
         
-
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
 
     }
@@ -38,21 +33,17 @@ class FileManagerActions {
     func updateBottomListsURLS() {
   
         FileManagerStorage.bottomListUrl = fileManager.getListUrl(FileManagerStorage.bottomLastUrl[FileManagerStorage.bottomLastUrl.count - 1])
-        FileManagerStorage.bottomFiles = []
-        FileManagerStorage.bottomFiles.insert("..", at: 0)
+        FileManagerStorage.myBottomFiles.removeAll()
         
-        FileManagerStorage.bottomListUrl.forEach { FileManagerStorage.bottomFiles.append(fileManager.getNameByUrl($0)) }
         
-        //FIXME: - Not working url index with sorted string array
-        //        storage.files.sorted()
-
+        FileManagerStorage.bottomListUrl.forEach { FileManagerStorage.myBottomFiles.updateValue($0, forKey: fileManager.getNameByUrl($0)) }
+        
+        FileManagerStorage.myBottomFilesSorted = FileManagerStorage.myBottomFiles.sorted(by: { $0.0 < $1.0 })
+        FileManagerStorage.myBottomFilesSorted.insert((key: "..", value: URL(string: "..")!), at: 0)
+        
         FileManagerStorage.bottomUrlSizer = []
         FileManagerStorage.bottomUrlSizer.insert(" ", at: 0)
-        FileManagerStorage.bottomListUrl.forEach { FileManagerStorage.bottomUrlSizer.append($0.fileSizeString)}
-        
-        
-        print("Debugger message: - BOTTOM url sizer is - \(FileManagerStorage.bottomUrlSizer)")
-        print("Debugger message: - BOTTOM files in array - \(FileManagerStorage.bottomFiles)")
+        FileManagerStorage.myBottomFilesSorted.forEach { FileManagerStorage.bottomUrlSizer.append($1.fileSizeString)}
         
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
         

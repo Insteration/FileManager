@@ -1,14 +1,14 @@
 //
-//  InfoViewController.swift
+//  FileManagerBottomViewController.swift
 //  FileManager
 //
-//  Created by Artem Karmaz on 3/27/19.
+//  Created by Artem Karmaz on 3/29/19.
 //  Copyright © 2019 Johansson Group. All rights reserved.
 //
 
 import UIKit
 
-class FileManagerTopInfoViewController: UITableViewController {
+class FileManagerBottomInfoViewController: UITableViewController {
     
     @IBOutlet weak var fileSizeLabel: UILabel!
     @IBOutlet weak var fileDateLabel: UILabel!
@@ -18,16 +18,16 @@ class FileManagerTopInfoViewController: UITableViewController {
     var fm = FM()
     
     fileprivate func showFileInfo() {
-        self.title = FileManagerStorage.topFiles[storage.topIndex]
+        self.title = FileManagerStorage.myBottomFilesSorted[storage.bottomIndex].0
         
-        if storage.topIndex == 0 {
+        if storage.bottomIndex == 0 {
             fileSizeLabel.text = ".."
             fileDateLabel.text = ".."
         } else {
-            fileSizeLabel.text = FileManagerStorage.topListUrl[storage.topIndex - 1].fileSizeString
-            let date = FileManagerStorage.topListUrl[storage.topIndex - 1].creationDate
+            fileSizeLabel.text = FileManagerStorage.myBottomFilesSorted[storage.bottomIndex].1.fileSizeString
+            let date = FileManagerStorage.myBottomFilesSorted[storage.bottomIndex].1.creationDate
             fileDateLabel.text = date?.asString(style: .long)
-            infoTextView.text = fm.infoAbout(url: FileManagerStorage.topListUrl[storage.topIndex - 1])
+            infoTextView.text = fm.infoAbout(url: FileManagerStorage.myBottomFilesSorted[storage.bottomIndex].1)
         }
         
     }

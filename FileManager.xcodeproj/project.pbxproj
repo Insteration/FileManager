@@ -29,27 +29,27 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerFileTableViewController.swift; sourceTree = "<group>"; };
+		D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerFileTableViewController.swift; path = ../FileManagerFileTableViewController.swift; sourceTree = "<group>"; };
 		D907C258224F7EE40008DEAA /* FileManagerLeftTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerLeftTableViewController.swift; sourceTree = "<group>"; };
 		D907C25A224F7EF30008DEAA /* FileManagerCommandTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerCommandTableViewController.swift; sourceTree = "<group>"; };
-		D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerOptionsTableViewController.swift; sourceTree = "<group>"; };
+		D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerOptionsTableViewController.swift; path = ../FileManagerOptionsTableViewController.swift; sourceTree = "<group>"; };
 		D907C25E224F7F0B0008DEAA /* FileManagerRightTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerRightTableViewController.swift; sourceTree = "<group>"; };
 		D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTopInfoViewController.swift; sourceTree = "<group>"; };
-		D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerStorage.swift; sourceTree = "<group>"; };
-		D9137D56224C033E002A0EC4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerStorage.swift; path = ../FileManagerStorage.swift; sourceTree = "<group>"; };
+		D9137D56224C033E002A0EC4 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Extensions.swift; path = ../Extensions.swift; sourceTree = "<group>"; };
 		D99CD6C9224CDB0E00BB1720 /* FileManagerAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerAlertController.swift; sourceTree = "<group>"; };
-		D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerActions.swift; sourceTree = "<group>"; };
+		D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerActions.swift; path = ../FileManagerActions.swift; sourceTree = "<group>"; };
 		D99CD6CD224CED0900BB1720 /* FileManagerTopPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerTopPathViewController.swift; sourceTree = "<group>"; };
 		D99CD6D1224E317200BB1720 /* FileManagerMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerMainViewController.swift; sourceTree = "<group>"; };
 		D99CD6D3224E474500BB1720 /* FileManagerBottomInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerBottomInfoViewController.swift; sourceTree = "<group>"; };
-		D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerBottomPathViewController.swift; sourceTree = "<group>"; };
+		D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerBottomPathViewController.swift; path = ../FileManagerBottomPathViewController.swift; sourceTree = "<group>"; };
 		D9C159E1224A4CE50086C550 /* FileManager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FileManager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D9C159E4224A4CE50086C550 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D9C159E9224A4CE50086C550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		D9C159EB224A4CE70086C550 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D9C159EE224A4CE70086C550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D9C159F0224A4CE70086C550 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		D9C159F6224A4DCE0086C550 /* FileManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileManagerModel.swift; sourceTree = "<group>"; };
+		D9C159F6224A4DCE0086C550 /* FileManagerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = FileManagerModel.swift; path = ../FileManagerModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +63,92 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D907C26222513BAA0008DEAA /* FileManagerExtensions */ = {
+			isa = PBXGroup;
+			children = (
+				D9137D56224C033E002A0EC4 /* Extensions.swift */,
+			);
+			path = FileManagerExtensions;
+			sourceTree = "<group>";
+		};
+		D907C26322513BC70008DEAA /* FileManagerViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D99CD6D1224E317200BB1720 /* FileManagerMainViewController.swift */,
+				D907C26622513C380008DEAA /* FileManagerTopViewControllers */,
+				D907C26722513C490008DEAA /* FileManagerBottomViewControllers */,
+				D907C26522513C170008DEAA /* FileManagerMenuViewControllers */,
+			);
+			path = FileManagerViewControllers;
+			sourceTree = "<group>";
+		};
+		D907C26422513BF40008DEAA /* FileManagerModels */ = {
+			isa = PBXGroup;
+			children = (
+				D99CD6C9224CDB0E00BB1720 /* FileManagerAlertController.swift */,
+				D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */,
+				D9C159F6224A4DCE0086C550 /* FileManagerModel.swift */,
+				D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */,
+			);
+			path = FileManagerModels;
+			sourceTree = "<group>";
+		};
+		D907C26522513C170008DEAA /* FileManagerMenuViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D907C258224F7EE40008DEAA /* FileManagerLeftTableViewController.swift */,
+				D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */,
+				D907C25A224F7EF30008DEAA /* FileManagerCommandTableViewController.swift */,
+				D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */,
+				D907C25E224F7F0B0008DEAA /* FileManagerRightTableViewController.swift */,
+			);
+			path = FileManagerMenuViewControllers;
+			sourceTree = "<group>";
+		};
+		D907C26622513C380008DEAA /* FileManagerTopViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */,
+				D99CD6CD224CED0900BB1720 /* FileManagerTopPathViewController.swift */,
+			);
+			path = FileManagerTopViewControllers;
+			sourceTree = "<group>";
+		};
+		D907C26722513C490008DEAA /* FileManagerBottomViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				D99CD6D3224E474500BB1720 /* FileManagerBottomInfoViewController.swift */,
+				D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */,
+			);
+			path = FileManagerBottomViewControllers;
+			sourceTree = "<group>";
+		};
+		D907C26822513C750008DEAA /* FileManagerAppDelegate */ = {
+			isa = PBXGroup;
+			children = (
+				D9C159E4224A4CE50086C550 /* AppDelegate.swift */,
+			);
+			path = FileManagerAppDelegate;
+			sourceTree = "<group>";
+		};
+		D907C26922513C980008DEAA /* FileManagerStoryboards */ = {
+			isa = PBXGroup;
+			children = (
+				D9C159ED224A4CE70086C550 /* LaunchScreen.storyboard */,
+				D9C159E8224A4CE50086C550 /* Main.storyboard */,
+			);
+			path = FileManagerStoryboards;
+			sourceTree = "<group>";
+		};
+		D907C26A22513CF50008DEAA /* FileManagerResources */ = {
+			isa = PBXGroup;
+			children = (
+				D9C159EB224A4CE70086C550 /* Assets.xcassets */,
+				D9C159F0224A4CE70086C550 /* Info.plist */,
+			);
+			path = FileManagerResources;
+			sourceTree = "<group>";
+		};
 		D9C159D8224A4CE50086C550 = {
 			isa = PBXGroup;
 			children = (
@@ -82,26 +168,12 @@
 		D9C159E3224A4CE50086C550 /* FileManager */ = {
 			isa = PBXGroup;
 			children = (
-				D9C159E4224A4CE50086C550 /* AppDelegate.swift */,
-				D9C159EB224A4CE70086C550 /* Assets.xcassets */,
-				D9137D56224C033E002A0EC4 /* Extensions.swift */,
-				D99CD6C9224CDB0E00BB1720 /* FileManagerAlertController.swift */,
-				D99CD6CB224CDC4100BB1720 /* FileManagerActions.swift */,
-				D99CD6D1224E317200BB1720 /* FileManagerMainViewController.swift */,
-				D9137D52224BEEF2002A0EC4 /* FileManagerTopInfoViewController.swift */,
-				D99CD6D3224E474500BB1720 /* FileManagerBottomInfoViewController.swift */,
-				D9C159F6224A4DCE0086C550 /* FileManagerModel.swift */,
-				D99CD6CD224CED0900BB1720 /* FileManagerTopPathViewController.swift */,
-				D99CD6D5224E49AD00BB1720 /* FileManagerBottomPathViewController.swift */,
-				D9137D54224BF18A002A0EC4 /* FileManagerStorage.swift */,
-				D9C159F0224A4CE70086C550 /* Info.plist */,
-				D9C159ED224A4CE70086C550 /* LaunchScreen.storyboard */,
-				D9C159E8224A4CE50086C550 /* Main.storyboard */,
-				D907C258224F7EE40008DEAA /* FileManagerLeftTableViewController.swift */,
-				D907C256224F6AC10008DEAA /* FileManagerFileTableViewController.swift */,
-				D907C25A224F7EF30008DEAA /* FileManagerCommandTableViewController.swift */,
-				D907C25C224F7EFF0008DEAA /* FileManagerOptionsTableViewController.swift */,
-				D907C25E224F7F0B0008DEAA /* FileManagerRightTableViewController.swift */,
+				D907C26822513C750008DEAA /* FileManagerAppDelegate */,
+				D907C26222513BAA0008DEAA /* FileManagerExtensions */,
+				D907C26422513BF40008DEAA /* FileManagerModels */,
+				D907C26A22513CF50008DEAA /* FileManagerResources */,
+				D907C26922513C980008DEAA /* FileManagerStoryboards */,
+				D907C26322513BC70008DEAA /* FileManagerViewControllers */,
 			);
 			path = FileManager;
 			sourceTree = "<group>";
@@ -340,7 +412,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G82CYC7M5V;
-				INFOPLIST_FILE = FileManager/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FileManager/FileManagerResources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,7 +430,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = G82CYC7M5V;
-				INFOPLIST_FILE = FileManager/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/FileManager/FileManagerResources/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

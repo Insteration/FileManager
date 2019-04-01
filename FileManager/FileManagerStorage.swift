@@ -8,21 +8,33 @@
 
 import Foundation
 
-class FileManagerStorage {
-    let path = ""
+struct FileManagerStorage {
     
-    static var topFiles = [String]()
-    static var topFilteredFiles = [String]()
+    let path = ""
+    var topFilteringOrNot = false
+    
+    //  MARK: - Top File Manager Column
+    
+    static var myTopFiles = [String : URL]()
+    static var myTopFilesSorted = [(key: String, value: URL)]()
+
     var topIndex = 0
+    
     static var topUrl: URL?
     static var topListUrl = [URL]()
     static var topLastUrl = [URL]()
+    static var topUrlSort = [URL]()
     static var topTemporaryPath = String()
     static var topUrlSizer = [String]()
     
-    static var bottomFiles = [String]()
-    static var bottomFilesFilteredFiles = [String]()
+    
+    // MARK: - Bottom File Manager Column
+    
+    static var myBottomFiles = [String : URL]()
+    static var myBottomFilesSorted = [(key: String, value: URL)]()
+    
     var bottomIndex = 0
+    
     static var bottomUrl: URL?
     static var bottomListUrl = [URL]()
     static var bottomLastUrl = [URL]()

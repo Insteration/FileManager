@@ -12,14 +12,11 @@ class FileManagerMainViewController: UIViewController {
     
     @IBOutlet weak var fileManagerTopTableView: UITableView!
     @IBOutlet weak var fileManagerBottomTableView: UITableView!
-    
-    
     @IBOutlet weak var leftMenuButton: UIButton!
     @IBOutlet weak var fileMenuButton: UIButton!
     @IBOutlet weak var commandMenuButton: UIButton!
     @IBOutlet weak var optionsMenuButton: UIButton!
     @IBOutlet weak var rightMenuButton: UIButton!
-    
     
     var fileManager = FM()
     var storage = FileManagerStorage()
@@ -43,7 +40,7 @@ class FileManagerMainViewController: UIViewController {
         }()
     }
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.hidesSearchBarWhenScrolling = true
@@ -58,7 +55,7 @@ class FileManagerMainViewController: UIViewController {
         setupOptionsMenuButton()
         setupRightMenuButton()
         
-        //        createSearchBarController()
+        createSearchBarController()
         
         // FM Start directory
         print("Debugger message: Home documents directory URL is - \(fileManager.getUrl(storage.path))")
@@ -102,7 +99,7 @@ class FileManagerMainViewController: UIViewController {
     }
     
     
-
+    
     
     @objc func shouldReload() {
         UIView.transition(with: fileManagerTopTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerTopTableView.reloadData() })
@@ -114,7 +111,16 @@ class FileManagerMainViewController: UIViewController {
 extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "File list"
+        var headerName = ""
+        switch tableView {
+        case fileManagerTopTableView:
+            headerName = "File list #1"
+        case fileManagerBottomTableView:
+            headerName = "File list #2"
+        default:
+            ()
+        }
+        return headerName
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -125,9 +131,13 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
         var numberOfRow = 1
         switch tableView {
         case fileManagerTopTableView:
-            numberOfRow = FileManagerStorage.topFiles.count
+            if searchController.isActive {
+//                numberOfRow = FileManagerStorage.topFilteredFiles.count
+            } else {
+                numberOfRow = FileManagerStorage.myTopFilesSorted.count
+            }
         case fileManagerBottomTableView:
-            numberOfRow = FileManagerStorage.bottomFiles.count
+            numberOfRow = FileManagerStorage.myBottomFilesSorted.count
         default:
             ()
         }
@@ -137,25 +147,45 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         var cell = UITableViewCell()
         
-     
+        
         
         switch tableView {
         case fileManagerTopTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Top", for: indexPath)
-            cell.textLabel?.text = FileManagerStorage.topFiles[indexPath.row]
-            cell.detailTextLabel?.text = FileManagerStorage.topUrlSizer[indexPath.row]
-            if cell.textLabel?.text == ".." {
-                cell.accessoryType = .none
+            
+            if searchController.isActive {
+//
+//                //                cell.detailTextLabel?.isHidden = true
+//                cell.textLabel?.text = FileManagerStorage.topFilteredFiles[indexPath.row]
+//                //                cell.detailTextLabel?.text = FileManagerStorage.topUrlSizer[indexPath.row]
+//                //                cell.detailTextLabel
+//                if cell.textLabel?.text == ".." {
+//                    cell.accessoryType = .none
+//                    cell.detailTextLabel?.isEnabled = false
+//                } else {
+//                    cell.accessoryType = .detailButton
+//                }
             } else {
-                cell.accessoryType = .detailButton
+
+                cell.textLabel?.text = FileManagerStorage.myTopFilesSorted[indexPath.row].0
+                
+                cell.detailTextLabel?.text = FileManagerStorage.myTopFilesSorted[indexPath.row].1.fileSizeString
+                
+                if cell.textLabel?.text == ".." {
+                    cell.accessoryType = .none
+                    cell.detailTextLabel?.isHidden = true
+                } else {
+                    cell.accessoryType = .detailButton
+                }
             }
- 
+            
         case fileManagerBottomTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Bottom", for: indexPath)
-            cell.textLabel?.text = FileManagerStorage.bottomFiles[indexPath.row]
-            cell.detailTextLabel?.text = FileManagerStorage.bottomUrlSizer[indexPath.row]
+            cell.textLabel?.text = FileManagerStorage.myBottomFilesSorted[indexPath.row].0
+            cell.detailTextLabel?.text = FileManagerStorage.myBottomFilesSorted[indexPath.row].1.fileSizeString
             if cell.textLabel?.text == ".." {
                 cell.accessoryType = .none
+                cell.detailTextLabel?.isHidden = true
             } else {
                 cell.accessoryType = .detailButton
             }
@@ -272,11 +302,22 @@ extension FileManagerMainViewController: UISearchResultsUpdating {
     
     #warning("Fix perehod in next folder from filtered array")
     func updateSearchResults(for searchController: UISearchController) {
-        //        FileManagerStorage.topFilteredFiles.removeAll(keepingCapacity: false)
-        //        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
-        //        let array = (FileManagerStorage.topFiles as NSArray).filtered(using: searchPredicate)
-        //        FileManagerStorage.topFilteredFiles = array as! [String]
-        //        self.tableView.reloadData()
+//        FileManagerStorage.topFilteredFiles.removeAll(keepingCapacity: false)
+//        FileManagerStorage.topFilteredUrls.removeAll(keepingCapacity: false)
+//        
+//        let searchPredicate = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+//        //        let searchUrls = NSPredicate(format: "SELF CONTAINS[c] %@", searchController.searchBar.text!)
+//        
+//        let array = (FileManagerStorage.topFiles as NSArray).filtered(using: searchPredicate)
+//        
+//        
+//        FileManagerStorage.topFilteredFiles = array as! [String]
+//        FileManagerStorage.topFilteredFiles.insert("..", at: 0)
+//        
+//        //        FileManagerStorage.topFilteredUrls = urlArray as! [URL]
+//        //        FileManagerStorage.topFilteredUrls.forEach { print ("URL ---------------------------------- \($0)")}
+//        //
+//        fileManagerTopTableView.reloadData()
     }
     
 }
@@ -286,14 +327,20 @@ extension FileManagerMainViewController {
     // MARK: - accessoryButtonTappedForRowWith
     
     func tableView(_ tableView: UITableView, accessoryButtonTappedForRowWith indexPath: IndexPath) {
-        
-        switch tableView {
-        case fileManagerTopTableView:
-            storage.topIndex = indexPath.row
-        case fileManagerBottomTableView:
-            storage.bottomIndex = indexPath.row
-        default:
-            ()
+        if searchController.isActive {
+//            storage.topFilteringOrNot = true
+//            storage.topSortIndex = indexPath.row
+//            print("storage index set up on - \(storage.topSortIndex)")
+        } else {
+            storage.topFilteringOrNot = false
+            switch tableView {
+            case fileManagerTopTableView:
+                storage.topIndex = indexPath.row
+            case fileManagerBottomTableView:
+                storage.bottomIndex = indexPath.row
+            default:
+                ()
+            }
         }
     }
     
@@ -315,9 +362,11 @@ extension FileManagerMainViewController {
 }
 
 extension FileManagerMainViewController: UIPopoverPresentationControllerDelegate {
+    
     func adaptivePresentationStyle(for controller: UIPresentationController) -> UIModalPresentationStyle {
         return .none
     }
+    
     
     private func setupLeftMenuButton() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tapped1))
@@ -370,7 +419,7 @@ extension FileManagerMainViewController: UIPopoverPresentationControllerDelegate
         popVC.preferredContentSize = CGSize(width: 250, height: 250)
         self.present(popVC, animated: true)
     }
-
+    
     @objc private func tapped3() {
         guard let popVC = storyboard?.instantiateViewController(withIdentifier: "FileManagerCommandTableViewController") else { return }
         popVC.modalPresentationStyle = .popover
