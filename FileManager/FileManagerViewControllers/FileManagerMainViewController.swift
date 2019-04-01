@@ -43,6 +43,13 @@ class FileManagerMainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+//        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 15, height: 15))
+//        imageView.contentMode = .scaleAspectFit
+//        let image = UIImage(named: "diskette.png")
+//        imageView.image = image
+//        navigationItem.titleView = imageView
+        
         navigationItem.hidesSearchBarWhenScrolling = true
         navigationController?.navigationBar.prefersLargeTitles = false
         
@@ -300,7 +307,7 @@ extension FileManagerMainViewController: UISearchResultsUpdating {
     
     // MARK: - Update search results
     
-    #warning("Fix perehod in next folder from filtered array")
+//    #warning("Fix perehod in next folder from filtered array")
     func updateSearchResults(for searchController: UISearchController) {
 //        FileManagerStorage.topFilteredFiles.removeAll(keepingCapacity: false)
 //        FileManagerStorage.topFilteredUrls.removeAll(keepingCapacity: false)
