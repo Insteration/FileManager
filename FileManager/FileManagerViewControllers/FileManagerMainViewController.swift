@@ -24,21 +24,26 @@ class FileManagerMainViewController: UIViewController {
     var fileManagerActions = FileManagerActions()
     lazy var searchController = UISearchController(searchResultsController: nil)
     
+    
     fileprivate func createSearchBarController() {
         // Add searchbar
-        searchController = {
-            let controller = UISearchController(searchResultsController: nil)
-            controller.searchResultsUpdater = self
-            controller.obscuresBackgroundDuringPresentation = false
-            controller.dimsBackgroundDuringPresentation = false
-            controller.searchBar.placeholder = "Search"
-            controller.searchBar.barStyle = .default
-            controller.searchBar.sizeToFit()
-            navigationItem.searchController = controller
-            definesPresentationContext = true
-            return controller
-        }()
+        if #available(iOS 11.0, *) {
+            searchController = {
+                let controller = UISearchController(searchResultsController: nil)
+                controller.searchResultsUpdater = self
+                controller.obscuresBackgroundDuringPresentation = false
+                controller.dimsBackgroundDuringPresentation = false
+                controller.searchBar.placeholder = "Search"
+                controller.searchBar.barStyle = .default
+                controller.searchBar.sizeToFit()
+                navigationItem.searchController = controller
+                definesPresentationContext = true
+                return controller
+            }()
+        }
     }
+    
+    
     
     
     override func viewDidLoad() {
@@ -50,8 +55,12 @@ class FileManagerMainViewController: UIViewController {
         //        imageView.image = image
         //        navigationItem.titleView = imageView
         
-        navigationItem.hidesSearchBarWhenScrolling = true
-        navigationController?.navigationBar.prefersLargeTitles = false
+        if #available(iOS 11.0, *) {
+            navigationItem.hidesSearchBarWhenScrolling = true
+            navigationController?.navigationBar.prefersLargeTitles = false
+        } else {
+            // Fallback on earlier versions
+        }
         
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
