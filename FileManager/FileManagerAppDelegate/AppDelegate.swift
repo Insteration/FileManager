@@ -12,10 +12,29 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+
+        let fileManagerUserDefaultsSettings = FileManagerUserDefaultsSettings()
+        
+        fileManagerUserDefaultsSettings.readFormUserDefaults()
+        print(fileManagerUserDefaultsSettings.readFormUserDefaults())
+        
+        if fileManagerUserDefaultsSettings.entryPoint {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let mainViewController = storyboard.instantiateViewController(withIdentifier: "StartUp")
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = mainViewController
+            self.window?.makeKeyAndVisible()
+        } else {
+            let storyboard = UIStoryboard(name: "Main", bundle: nil)
+            let surveyViewController = storyboard.instantiateViewController(withIdentifier: "FileManagerVC")
+            self.window = UIWindow(frame: UIScreen.main.bounds)
+            self.window?.rootViewController = surveyViewController
+            self.window?.makeKeyAndVisible()
+        }
+
         return true
     }
 

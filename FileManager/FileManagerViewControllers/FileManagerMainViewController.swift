@@ -18,10 +18,10 @@ class FileManagerMainViewController: UIViewController {
     @IBOutlet weak var optionsMenuButton: UIButton!
     @IBOutlet weak var rightMenuButton: UIButton!
     
-    var fileManager = FM()
-    var storage = FileManagerStorage()
-    var alert = Alert()
-    var fileManagerActions = FileManagerActions()
+    let fileManager = FM()
+    let storage = FileManagerStorage()
+    let alert = Alert()
+    let fileManagerActions = FileManagerActions()
     lazy var searchController = UISearchController(searchResultsController: nil)
     
     
@@ -62,9 +62,8 @@ class FileManagerMainViewController: UIViewController {
             // Fallback on earlier versions
         }
         
-        
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
-        
+
         setupLeftMenuButton()
         setupFileMenuButton()
         setupCommandMenuButton()
@@ -101,9 +100,7 @@ class FileManagerMainViewController: UIViewController {
         fileManagerTopTableView.dataSource = self
         fileManagerBottomTableView.delegate = self
         fileManagerBottomTableView.dataSource = self
-        // Do any additional setup after loading the view.
     }
-    
     
     @IBAction func fileManagerMenuButton(_ sender: UIBarButtonItem) {
         alert.createFolderAndFileMenu()
@@ -118,6 +115,7 @@ class FileManagerMainViewController: UIViewController {
         UIView.transition(with: fileManagerTopTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerTopTableView.reloadData() })
         UIView.transition(with: fileManagerBottomTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerBottomTableView.reloadData() })
     }
+
 }
 
 extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSource {

@@ -39,3 +39,5 @@ class FileManagerStorage {
     static var bottomLastUrl = [URL]()
     static var bottomTemporaryPath = String()
 }
+
+
