@@ -17,6 +17,9 @@ class FileManagerMainViewController: UIViewController {
     @IBOutlet weak var commandMenuButton: UIButton!
     @IBOutlet weak var optionsMenuButton: UIButton!
     @IBOutlet weak var rightMenuButton: UIButton!
+    @IBOutlet weak var fileManagerToolbar: UIToolbar!
+    @IBOutlet weak var refreshButton: UIBarButtonItem!
+    @IBOutlet weak var fileManagerQuickButton: UIBarButtonItem!
     
     let fileManager = FM()
     let storage = FileManagerStorage()
@@ -43,7 +46,39 @@ class FileManagerMainViewController: UIViewController {
         }
     }
     
-    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            self.view.backgroundColor = .darkGray
+            self.navigationController?.navigationBar.barTintColor = .darkGray
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white]
+            fileManagerTopTableView.backgroundColor = .darkGray
+            fileManagerBottomTableView.backgroundColor = .darkGray
+            fileManagerToolbar.barTintColor = .darkGray
+            leftMenuButton.setTitleColor(.white, for: .normal)
+            fileMenuButton.setTitleColor(.white, for: .normal)
+            commandMenuButton.setTitleColor(.white, for: .normal)
+            optionsMenuButton.setTitleColor(.white, for: .normal)
+            rightMenuButton.setTitleColor(.white, for: .normal)
+            refreshButton.tintColor = .white
+            fileManagerQuickButton.tintColor = .white
+        } else {
+            self.view.backgroundColor = .white
+            self.navigationController?.navigationBar.barTintColor = .white
+            navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.black]
+            fileManagerTopTableView.backgroundColor = .white
+            fileManagerBottomTableView.backgroundColor = .white
+            fileManagerToolbar.barTintColor = .white
+            leftMenuButton.setTitleColor(UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1), for: .normal)
+            fileMenuButton.setTitleColor(UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1), for: .normal)
+            commandMenuButton.setTitleColor(UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1), for: .normal)
+            optionsMenuButton.setTitleColor(UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1), for: .normal)
+            rightMenuButton.setTitleColor(UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1), for: .normal)
+            refreshButton.tintColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+            fileManagerQuickButton.tintColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+        }
+    }
     
     
     override func viewDidLoad() {
@@ -55,6 +90,8 @@ class FileManagerMainViewController: UIViewController {
         //        imageView.image = image
         //        navigationItem.titleView = imageView
         
+        
+        
         if #available(iOS 11.0, *) {
             navigationItem.hidesSearchBarWhenScrolling = true
             navigationController?.navigationBar.prefersLargeTitles = false
@@ -63,7 +100,7 @@ class FileManagerMainViewController: UIViewController {
         }
         
         NotificationCenter.default.addObserver(self, selector: #selector(self.shouldReload), name: NSNotification.Name(rawValue: "tableView.reloadRows"), object: nil)
-
+        
         setupLeftMenuButton()
         setupFileMenuButton()
         setupCommandMenuButton()
@@ -103,19 +140,20 @@ class FileManagerMainViewController: UIViewController {
     }
     
     @IBAction func fileManagerMenuButton(_ sender: UIBarButtonItem) {
-        alert.createFolderAndFileMenu()
+        alert.fileManagerQuickMenu()
     }
     
     @IBAction func fileManagerRefreshButton(_ sender: UIBarButtonItem) {
         fileManagerActions.updateTopListsURLS()
         fileManagerActions.updateBottomListsURLS()
+        print("Dark theme set up on - \(FileManagerUserDefaultsSettings.useDarkTheme)")
     }
     
     @objc func shouldReload() {
         UIView.transition(with: fileManagerTopTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerTopTableView.reloadData() })
         UIView.transition(with: fileManagerBottomTableView, duration: 0.15, options: .transitionCrossDissolve, animations: { self.fileManagerBottomTableView.reloadData() })
     }
-
+    
 }
 
 extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSource {
@@ -131,6 +169,28 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
             ()
         }
         return headerName
+    }
+    
+    func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
+        
+        let header = view as! UITableViewHeaderFooterView
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            header.textLabel?.textColor = .white
+        } else {
+            header.textLabel?.textColor = .gray
+        }
+ 
+        switch tableView {
+        case fileManagerTopTableView:
+            header.textLabel?.font = UIFont(name: "Verdana", size: 13)!
+    
+        case fileManagerBottomTableView:
+            header.textLabel?.font = UIFont(name: "Verdana", size: 13)!
+ 
+        default:
+            ()
+        }
     }
     
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -158,6 +218,8 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
         
         var cell = UITableViewCell()
         
+        
+        
         switch tableView {
         case fileManagerTopTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Top", for: indexPath)
@@ -174,6 +236,19 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
                 cell.detailTextLabel?.isHidden = false
             }
             
+            if FileManagerUserDefaultsSettings.useDarkTheme {
+                cell.backgroundColor = .darkGray
+                cell.textLabel?.textColor = .white
+                cell.detailTextLabel?.textColor = .white
+                cell.tintColor = .white
+            } else {
+                cell.backgroundColor = .white
+                cell.textLabel?.textColor = .black
+                cell.detailTextLabel?.textColor = .black
+                cell.tintColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+                
+            }
+            
         case fileManagerBottomTableView:
             cell = tableView.dequeueReusableCell(withIdentifier: "Bottom", for: indexPath)
             
@@ -187,6 +262,21 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
                 cell.accessoryType = .detailButton
                 cell.detailTextLabel?.isHidden = false
             }
+            
+            if FileManagerUserDefaultsSettings.useDarkTheme {
+                cell.backgroundColor = .darkGray
+                cell.textLabel?.textColor = .white
+                cell.detailTextLabel?.textColor = .white
+                cell.tintColor = .white
+
+            } else {
+                cell.backgroundColor = .white
+                cell.textLabel?.textColor = .black
+                cell.detailTextLabel?.textColor = .black
+                cell.tintColor = UIColor(red: 0, green: 0.478431, blue: 1, alpha: 1)
+
+            }
+            
         default:
             ()
         }

@@ -15,14 +15,27 @@ class FileManagerOptionsTableViewController: UITableViewController {
     lazy var mainVC = FileManagerMainViewController()
     lazy var fileManagerPreferencesActions = FileManagerPreferencesActions()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            self.view.backgroundColor = .darkGray
+            self.tableView.backgroundColor = .darkGray
+        } else {
+            self.view.backgroundColor = .white
+            self.tableView.backgroundColor = .white
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         preferredContentSize = CGSize(width: 250, height: tableView.contentSize.height)
     }
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-definesPresentationContext = true
+        definesPresentationContext = true
     }
     
     // MARK: - Table view data source
@@ -41,6 +54,14 @@ definesPresentationContext = true
         cell.textLabel?.text = fileManagerOptionsMenu[indexPath.row]
         cell.imageView?.image = fileManagerOptionsImagesMenu[indexPath.row]
         
+         if FileManagerUserDefaultsSettings.useDarkTheme {
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = .darkGray
+         } else {
+            cell.textLabel?.textColor = .black
+            cell.backgroundColor = .white
+        }
+        
         return cell
     }
     
@@ -57,10 +78,10 @@ definesPresentationContext = true
         FileManagerPreferences.fileManagerConfiguration = indexPath.row
         
         if FileManagerPreferences.fileManagerConfiguration == 0 {
-//            fileManagerPreferencesActions.teleportToConfigurationTableViewController()
+            //            fileManagerPreferencesActions.teleportToConfigurationTableViewController()
             teleportToConfigurationTableViewController()
         }
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FileManagerOptionsMenu"), object: nil)
+        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FileManagerOptionsMenu"), object: nil)
     }
     
     
@@ -69,5 +90,5 @@ definesPresentationContext = true
 extension FileManagerOptionsTableViewController {
     
     // MARK: Segue
-
+    
 }

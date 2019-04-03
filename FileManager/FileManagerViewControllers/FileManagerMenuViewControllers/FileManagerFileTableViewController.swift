@@ -13,6 +13,18 @@ class FileManagerFileTableViewController: UITableViewController {
     let fileManagerFilesMenu = ["View", "Edit", "Copy", "Link", "Create new file", "Delete"]
     let fileManagerFileImagesMenu = [UIImage(named: "files"), UIImage(named: "data"), UIImage(named: "copy"), UIImage(named: "link"), UIImage(named: "add-file"), UIImage(named: "delete")]
     lazy var mainVC = FileManagerMainViewController()
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            self.view.backgroundColor = .darkGray
+            self.tableView.backgroundColor = .darkGray
+        } else {
+            self.view.backgroundColor = .white
+            self.tableView.backgroundColor = .white
+        }
+    }
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
@@ -41,6 +53,14 @@ class FileManagerFileTableViewController: UITableViewController {
 
         cell.textLabel?.text = fileManagerFilesMenu[indexPath.row]
         cell.imageView?.image = fileManagerFileImagesMenu[indexPath.row]
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = .darkGray
+        } else {
+            cell.textLabel?.textColor = .black
+            cell.backgroundColor = .white
+        }
         
         return cell
     }

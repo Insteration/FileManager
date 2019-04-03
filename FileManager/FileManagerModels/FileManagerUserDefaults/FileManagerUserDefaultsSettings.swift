@@ -13,14 +13,18 @@ class FileManagerUserDefaultsSettings {
     var userDefaults = UserDefaults.standard
     
     var entryPoint = true
+    static var useDarkTheme = false
     let entryPointKey = "entryPointKey"
+    let useDarkThemeKey = "useDarkTheme"
     
     func writeToUserDefaultsEntryPoint() {
         userDefaults.set(entryPoint, forKey: entryPointKey)
+        userDefaults.set(FileManagerUserDefaultsSettings.useDarkTheme, forKey: useDarkThemeKey)
     }
     
     func readFormUserDefaults() {
         entryPoint = userDefaults.bool(forKey: entryPointKey)
+        FileManagerUserDefaultsSettings.useDarkTheme = userDefaults.bool(forKey: useDarkThemeKey)
     }
 
 }

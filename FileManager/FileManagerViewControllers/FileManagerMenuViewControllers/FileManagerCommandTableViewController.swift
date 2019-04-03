@@ -14,6 +14,18 @@ class FileManagerCommandTableViewController: UITableViewController {
     let fileManagerCommandImagesMenu = [UIImage(named: "menu"),UIImage(named: "directory"), UIImage(named: "folder-5"), UIImage(named: "boolean"), UIImage(named: "box")]
     lazy var mainVC = FileManagerMainViewController()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            self.view.backgroundColor = .darkGray
+            self.tableView.backgroundColor = .darkGray
+        } else {
+            self.view.backgroundColor = .white
+            self.tableView.backgroundColor = .white
+        }
+    }
+    
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         preferredContentSize = CGSize(width: 250, height: tableView.contentSize.height)
@@ -41,6 +53,14 @@ class FileManagerCommandTableViewController: UITableViewController {
         
         cell.textLabel?.text = fileManagerCommandMenu[indexPath.row]
         cell.imageView?.image = fileManagerCommandImagesMenu[indexPath.row]
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            cell.textLabel?.textColor = .white
+            cell.backgroundColor = .darkGray
+        } else {
+            cell.textLabel?.textColor = .black
+            cell.backgroundColor = .white
+        }
         
         return cell
     }

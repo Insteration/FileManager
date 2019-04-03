@@ -19,7 +19,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let fileManagerUserDefaultsSettings = FileManagerUserDefaultsSettings()
         
         fileManagerUserDefaultsSettings.readFormUserDefaults()
-        print(fileManagerUserDefaultsSettings.readFormUserDefaults())
         
         if fileManagerUserDefaultsSettings.entryPoint {
             let storyboard = UIStoryboard(name: "Main", bundle: nil)

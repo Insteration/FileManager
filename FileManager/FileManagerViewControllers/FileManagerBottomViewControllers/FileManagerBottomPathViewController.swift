@@ -15,6 +15,20 @@ class FileManagerBottomPathViewController: UIViewController {
     
     var fileManager = FM()
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if FileManagerUserDefaultsSettings.useDarkTheme {
+            self.view.backgroundColor = .darkGray
+            pathLabel.textColor = .white
+            pathHeaderLabel.textColor = .white
+        } else {
+            self.view.backgroundColor = .white
+            pathLabel.textColor = .black
+            pathHeaderLabel.textColor = .black
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
