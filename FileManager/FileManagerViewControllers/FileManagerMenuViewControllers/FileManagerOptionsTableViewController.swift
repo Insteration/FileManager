@@ -66,7 +66,7 @@ class FileManagerOptionsTableViewController: UITableViewController {
         return cell
     }
     
-    private func teleportToConfigurationTableViewController() {
+     func teleportToConfigurationTableViewController() {
         let storyboard : UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let fileManagerConfigurationVC = storyboard.instantiateViewController(withIdentifier: "ConfigurationVC") as! FileManagerConfigurationTableViewController
         let fileManagerNavController = UINavigationController(rootViewController: fileManagerConfigurationVC)
