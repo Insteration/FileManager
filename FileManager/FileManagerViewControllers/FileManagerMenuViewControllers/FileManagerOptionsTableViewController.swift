@@ -14,6 +14,7 @@ class FileManagerOptionsTableViewController: UITableViewController {
     let fileManagerOptionsImagesMenu = [UIImage(named: "settings-4"), UIImage(named: "transfer"), UIImage(named: "web-design"), UIImage(named: "favourites"), UIImage(named: "diskette-4")]
     lazy var mainVC = FileManagerMainViewController()
     lazy var fileManagerPreferencesActions = FileManagerPreferencesActions()
+    lazy var alert = Alert()
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -77,11 +78,20 @@ class FileManagerOptionsTableViewController: UITableViewController {
         print("Select row - \(indexPath.row)")
         FileManagerPreferences.fileManagerConfiguration = indexPath.row
         
-        if FileManagerPreferences.fileManagerConfiguration == 0 {
-            //            fileManagerPreferencesActions.teleportToConfigurationTableViewController()
+        switch FileManagerPreferences.fileManagerConfiguration {
+        case 0:
             teleportToConfigurationTableViewController()
+        case 1:
+            ()
+        case 2:
+            ()
+        case 3:
+            ()
+        case 4: 
+            alert.saveSetupOptions()
+        default:
+            ()
         }
-        //        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "FileManagerOptionsMenu"), object: nil)
     }
     
     

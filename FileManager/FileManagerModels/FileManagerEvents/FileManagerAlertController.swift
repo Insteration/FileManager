@@ -14,6 +14,7 @@ class Alert {
     var textField2: UITextField?
     var fileManagerActions = FileManagerActions()
     lazy var fileManager = FM()
+    lazy var fileManagerUserDefaultsSettings = FileManagerUserDefaultsSettings()
     
     func darkThemeForAlertController(_ alert: UIAlertController) {
         
@@ -163,5 +164,12 @@ class Alert {
                 self.textField2?.attributedPlaceholder = NSAttributedString(string: "Enter name", attributes: [NSAttributedString.Key.foregroundColor: UIColor.black])
             }
         }
+    }
+    
+    func saveSetupOptions() {
+        let alert = UIAlertController(title: "Settings saved successfully!", message: "", preferredStyle: .alert)
+        darkThemeForAlertController(alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in self.fileManagerUserDefaultsSettings.writeToUserDefaultsEntryPoint()}))
+        alert.presentInOwnWindow(animated: true, completion: nil)
     }
 }

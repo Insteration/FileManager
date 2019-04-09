@@ -649,7 +649,7 @@
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="diskette" translatesAutoresizingMaskIntoConstraints="NO" id="uLj-Yy-EkW">
-                                <rect key="frame" x="16" y="153" width="288" height="64"/>
+                                <rect key="frame" x="16" y="201" width="288" height="16"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
