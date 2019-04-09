@@ -162,9 +162,9 @@ extension FileManagerMainViewController: UITableViewDelegate, UITableViewDataSou
         var headerName = ""
         switch tableView {
         case fileManagerTopTableView:
-            headerName = "File list #1"
+            headerName = "File panel #1"
         case fileManagerBottomTableView:
-            headerName = "File list #2"
+            headerName = "File panel #2"
         default:
             ()
         }
