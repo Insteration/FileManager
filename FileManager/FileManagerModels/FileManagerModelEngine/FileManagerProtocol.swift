@@ -243,49 +243,47 @@ struct AppFile : AppFileManipulation, AppFileStatusChecking, AppFileSystemMetaDa
         }
     }
     
-    /*
-     func delete()
-     {
-     deleteFile(at: .Documents, withName: "karma.txt")
-     }
-     func read()
-     {
-     readFile(at: .Documents, withName: "text2.txt")
-     }
-     func list() -> Bool
-     {
-     return list(directory: getURL(for: .Documents))
-     }
-     func rename()
-     {
-     renameFile(at: .Documents, with: "text2.txt", to: "karma.txt")
-     }
-     func move()
-     {
-     // moveFile(withName: "text2.txt", inDirectory: .Temp, toDirectory: .Documments) WORKS
-     moveFile(withName: "text2.txt", inDirectory: .Inbox, toDirectory: .Documents)
-     }
-     func copy() -> Bool
-     {
-     return copyFile(withName: "karma", inDirectory: .Documents, toDirectory: .Documents)
-     }
-     func doesExist() -> Bool
-     {
-     return exists(file: buildFullPath(forFileName: "karma.txt", inDirectory: .Documents))
-     }
-     func getAttribs()
-     {
-     let attribs = attributes(ofFile: buildFullPath(forFileName: "karma.txt", inDirectory: .Documents))
-     for (key, value) in attribs
-     {
-     print("\(key) value is \(value)")
-     }
-     }
-     func changeExtension()
-     {
-     changeFileExtension(withName: "text1.txt", inDirectory: .Documents, toNewExtension: "html")
-     }
-     */
+    
+    func delete() {
+        deleteFile(at: .Documents, withName: "karma.txt")
+    }
+    
+    func read() {
+        readFile(at: .Documents, withName: "text2.txt")
+    }
+    
+    func listDir() -> Bool {
+        return list(directory: getURL(for: .Documents))
+    }
+    
+    func rename() {
+        renameFile(at: .Documents, with: "text2.txt", to: "karma.txt")
+    }
+    
+    func move() {
+        // moveFile(withName: "text2.txt", inDirectory: .Temp, toDirectory: .Documments) WORKS
+        moveFile(withName: "text2.txt", inDirectory: .Inbox, toDirectory: .Documents)
+    }
+    
+    func copy() -> Bool {
+        return copyFile(withName: "karma", inDirectory: .Documents, toDirectory: .Documents)
+    }
+    
+    func doesExist() -> Bool {
+        return exists(file: buildFullPath(forFileName: "karma.txt", inDirectory: .Documents))
+    }
+    
+    func getAttributes() {
+        let attribs = attributes(ofFile: buildFullPath(forFileName: "karma.txt", inDirectory: .Documents))
+        for (key, value) in attribs {
+            print("\(key) value is \(value)")
+        }
+    }
+    
+    func changeExtension() {
+        changeFileExtension(withName: "text1.txt", inDirectory: .Documents, toNewExtension: "html")
+    }
+    
 }
 
 
